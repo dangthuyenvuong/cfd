@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom'
 import Home from './pages/home'
 import Header from './components/Header';
@@ -14,33 +15,48 @@ import Register from './pages/register';
 import Page404 from './pages/page404';
 import Demo from './pages/demo';
 
+import AuthProvider, { useAuth } from './hooks/useAuth';
+import Login from './pages/login';
+import PrivateRoute from './components/PrivateRoute';
+
+
+
+
+
+
 function App() {
+
+
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Switch>
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Header />
+          <Switch>
+
+            <Route path="/hoc-vien">
+              <Profile />
+            </Route>
+            <PrivateRoute path="/dang-ky/khoa-hoc-:id" component={Register}/>
+            <Route exact path="/demo">
+              <Demo />
+            </Route>
+            <Route path="/dang-nhap" component={Login}/>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route>
+              <Page404 />
+            </Route>
+          </Switch>
+          <Footer />
           
-          <Route path="/hoc-vien">
-            <Profile />
-          </Route>
-          <Route path="/dang-ky/khoa-hoc-:id">
-            <Register />
-          </Route>
-          <Route exact path="/demo">
-            <Demo />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route>
-            <Page404 />
-          </Route>
-        </Switch>
-        <Footer />
-        <PopupLogin />
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </AuthProvider>
+
+
+
   );
 }
 

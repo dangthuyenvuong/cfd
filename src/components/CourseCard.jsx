@@ -1,8 +1,15 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 export default function CourseCard({ title, description, cover, id = "16" }) {
+
+    let courseRef = useRef();
+    useEffect(() => {
+        console.log(courseRef.current)
+    }, [])
+
     return (
-        <div className="col-md-4 course__item">
+        <div className="col-md-4 course__item" ref={courseRef}>
             <a className="course__item-img">
                 <img src={cover} alt="alter" />
             </a>

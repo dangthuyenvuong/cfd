@@ -1,46 +1,96 @@
 import { useState } from "react"
+import useValidateForm from "../../../hooks/useValidateForm"
 
 export default function MyProfile() {
 
 
-    let [form, setForm] = useState({
+    let {data, error, inputChange, onSubmit} = useValidateForm({
         name: '',
         phone: '',
-        email: '',
+        email: 'vuong.dang@dna.vn',
         facebook: '',
         skype: ''
+    }, {
+        validate: {
+            name: {
+                required: true
+            },
+            email: {
+                required: true,
+                pattern: 'email'
+            },
+            phone: {
+                required: true,
+                pattern: 'phone'
+            },
+            facebook: {
+                required: true,
+                pattern: 'url'
+            },
+            skype: {
+                required: true,
+            },
+        },
+        message: {
+            name: {
+                required: 'Họ tên là bắt buộc'
+            },
+            email: {
+                required: 'Email là bắt buộc',
+                pattern: 'Email không đúng định dạng'
+            },
+            phone: {
+                required: 'Số điện thoại là bắt buộc',
+                pattern: 'Số điện thoại không đúng định dạng'
+            },
+            facebook: {
+                required: "Link Facebook là bắt buộc"
+            },
+            skype: {
+                required: "Link skype là bắt buộc"
+            }
+        }
     })
 
-    function inputOnChange(e) {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value.trim()
-        })
+    function submit(){
+        let error = onSubmit();
+        if(!error){
+            console.log('call ajax')
+        }
     }
+
     return (
         <div className="tab__content-1">
             <form action="/" method="POST">
                 <div className="field">
                     <label>Họ và Tên</label>
-                    <input onChange={inputOnChange} type="text" name="name" value={form.name} />
+                    <input onChange={inputChange} type="text" name="name" value={data.name} />
+                    {error.name && <p className="input-error">{error.name}</p>}
                 </div>
                 <div className="field">
                     <label>Số điện thoại*</label>
-                    <input onChange={inputOnChange} type="text" name="phone" value={form.phone} />
+                    <input onChange={inputChange} type="text" name="phone" value={data.phone} />
+                    {error.phone && <p className="input-error">{error.phone}</p>}
+               
                 </div>
                 <div className="field">
                     <label>Email</label>
-                    <input onChange={inputOnChange} type="text" name="email" disabled value={form.email} />
+                    <input onChange={inputChange} type="text" name="email" disabled value={data.email} />
+                    {error.email && <p className="input-error">{error.email}</p>}
+
                 </div>
                 <div className="field">
                     <label>Facebook</label>
-                    <input onChange={inputOnChange} type="text" name="facebook" value={form.facebook} />
+                    <input onChange={inputChange} type="text" name="facebook" value={data.facebook} />
+                    {error.facebook && <p className="input-error">{error.facebook}</p>}
+
                 </div>
                 <div className="field">
                     <label>Skype</label>
-                    <input onChange={inputOnChange} type="text" name="skype" value={form.skype} />
+                    <input onChange={inputChange} type="text" name="skype" value={data.skype} />
+                    {error.skype && <p className="input-error">{error.skype}</p>}
                 </div>
-                <div className="btn-register btn-save">LƯU LẠI</div>
+                <div className="btn-register btn-save" onClick={submit}>LƯU LẠI</div>
             </form>
         </div>
     )

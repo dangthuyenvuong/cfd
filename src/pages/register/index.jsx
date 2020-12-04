@@ -1,58 +1,93 @@
-import { useState } from 'react'
-import { useParams } from 'react-router-dom';
+import './style.scss'
+import useValidateForm from '../../hooks/useValidateForm';
+
+
 
 export default function Register() {
 
-    let [form, setForm] = useState({
+
+    let { data, error, inputChange, onSubmit } = useValidateForm({
         name: '',
         phone: '',
         email: '',
         facebook: '',
         payment: '',
         note: ''
+    }, {
+        validate: {
+            name: {
+                required: true
+            },
+            email: {
+                required: true,
+                pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            },
+            phone: {
+                required: true,
+                pattern: 'phone'
+            },
+            facebook: {
+                required: true,
+            },
+        },
+        message: {
+            name: {
+                required: 'Họ tên là bắt buộc'
+            },
+            email: {
+                required: 'Email là bắt buộc',
+                pattern: 'Email không đúng định dạng'
+            },
+            phone: {
+                required: 'Số điện thoại là bắt buộc',
+                pattern: 'Số điện thoại không đúng định dạng'
+            },
+            facebook: {
+                required: "Link Facebook là bắt buộc"
+            }
+        }
     })
 
-    let params = useParams();
-    console.log(params)
+    // let [form, setForm] = useState({
+    //     name: '',
+    //     phone: '',
+    //     email: '',
+    //     facebook: '',
+    //     payment: '',
+    //     note: ''
+    // })
 
-    function handleSubmit() {
+    // function inputChange(e){
+    //     setForm({
+    //         ...form,
+    //         [e.target.name] : e.target.value.trim()
+    //     })
+    // }
 
-        let flag = true;
-        if (form.name === '') {
-            console.log('name khong duoc rong')
-            flag = false
+    // function handleSubmit(){
+
+
+    //     if(!form.name){
+    //         console.log('Name la bat buoc')
+    //     }
+
+    //     if(!(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(form.phone))){
+    //         console.log('phone khong dung dinh dang')
+    //     }
+    //     if(!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(form.email))){
+    //         console.log('email khong dung dinh dang')
+    //     }
+    //     if(!form.facebook){
+    //         console.log('facebook la bat buoc')
+    //     }
+    // }
+
+
+    function submit(){
+        let error = onSubmit()
+        if(!error){
+            console.log('Call ajax')
         }
-
-        if (!(/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/.test(form.email))) {
-            console.log('email khong dung dinh dang')
-            flag = false
-
-        }
-
-        if (!(/(03|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(form.phone))) {
-            console.log('phone khong dung dinh dang')
-            flag = false
-
-        }
-
-        if (form.facebook === '') {
-            console.log('facebook khong duoc rong')
-            flag = false
-
-        }
-
-        if (flag) {
-            // ajax
-            console.log('ajax')
-        }
-
-    }
-
-    function inputChange(e) {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value.trim()
-        })
     }
 
     return (
@@ -67,29 +102,33 @@ export default function Register() {
                         <form action="/" method="POST" className="register__form">
                             <div className="field">
                                 <label>Họ và Tên<span>*</span></label>
-                                <input type="text" name="name" onChange={inputChange} value={form.name} placeholder="Họ và tên bạn" />
+                                <input type="text" name="name" onChange={inputChange} value={data.name} placeholder="Họ và tên bạn" />
+                                {error.name && <p className="input-error">{error.name}</p>}
                             </div>
                             <div className="field">
                                 <label>Số điện thoại<span>*</span></label>
-                                <input type="text" name="phone" onChange={inputChange} value={form.phone} placeholder="Số điện thoại" />
+                                <input type="text" name="phone" onChange={inputChange} value={data.phone} placeholder="Số điện thoại" />
+                                {error.phone && <p className="input-error">{error.phone}</p>}
                             </div>
                             <div className="field">
                                 <label>Email<span>*</span></label>
-                                <input type="text" name="email" onChange={inputChange} value={form.email} placeholder="Email của bạn" />
+                                <input type="text" name="email" onChange={inputChange} value={data.email} placeholder="Email của bạn" />
+                                {error.email && <p className="input-error">{error.email}</p>}
                             </div>
                             <div className="field">
                                 <label>URL Facebook<span>*</span></label>
-                                <input type="text" name="facebook" onChange={inputChange} value={form.facebook} placeholder="https://facebook.com" />
+                                <input type="text" name="facebook" onChange={inputChange} value={data.facebook} placeholder="https://facebook.com" />
+                                {error.facebook && <p className="input-error">{error.facebook}</p>}
                             </div>
                             <div className="field">
                                 <label>Hình thức thanh toán</label>
-                                <input type="text" name="payment" onChange={inputChange} value={form.payment} placeholder="Chuyển khoản" />
+                                <input type="text" name="payment" onChange={inputChange} value={data.payment} placeholder="Chuyển khoản" />
                             </div>
                             <div className="field">
                                 <label>Ý kiến cá nhân</label>
-                                <input type="text" name="note" onChange={inputChange} value={form.note} placeholder="Định hướng và mong muốn của bạn" />
+                                <input type="text" name="note" onChange={inputChange} value={data.note} placeholder="Định hướng và mong muốn của bạn" />
                             </div>
-                            <div className="btn-register btn-save" onClick={handleSubmit}>
+                            <div className="btn-register btn-save" onClick={submit}>
                                 ĐĂNG KÝ
                         </div>
                         </form>
