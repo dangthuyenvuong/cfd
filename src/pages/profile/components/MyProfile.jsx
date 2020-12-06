@@ -1,15 +1,20 @@
-import { useState } from "react"
-import useValidateForm from "../../../hooks/useValidateForm"
+import { useAuth } from "../../../core/hooks/useAuth";
+import useValidateForm from "../../../core/hooks/useValidateForm";
+// import { useAuth } from "../../../core/hooks/useAuth";
+// import useValidateForm from "../../../core/hooks/useValidateForm"
 
 export default function MyProfile() {
 
+    let { user } = useAuth();
 
-    let {data, error, inputChange, onSubmit} = useValidateForm({
+    let { data, error, inputChange, onSubmit } = useValidateForm({
+        
         name: '',
         phone: '',
-        email: 'vuong.dang@dna.vn',
+        // email: 'vuong.dang@dna.vn',
         facebook: '',
-        skype: ''
+        skype: '',
+        ...user,
     }, {
         validate: {
             name: {
@@ -44,7 +49,8 @@ export default function MyProfile() {
                 pattern: 'Số điện thoại không đúng định dạng'
             },
             facebook: {
-                required: "Link Facebook là bắt buộc"
+                required: "Link Facebook là bắt buộc",
+                pattern: 'Link Facebook không đúng định dạng'
             },
             skype: {
                 required: "Link skype là bắt buộc"
@@ -52,12 +58,13 @@ export default function MyProfile() {
         }
     })
 
-    function submit(){
+    function submit() {
         let error = onSubmit();
-        if(!error){
+        if (!error) {
             console.log('call ajax')
         }
     }
+
 
     return (
         <div className="tab__content-1">
@@ -71,12 +78,11 @@ export default function MyProfile() {
                     <label>Số điện thoại*</label>
                     <input onChange={inputChange} type="text" name="phone" value={data.phone} />
                     {error.phone && <p className="input-error">{error.phone}</p>}
-               
+
                 </div>
                 <div className="field">
                     <label>Email</label>
-                    <input onChange={inputChange} type="text" name="email" disabled value={data.email} />
-                    {error.email && <p className="input-error">{error.email}</p>}
+                    <input type="text" name="email" disabled value={user.email} />
 
                 </div>
                 <div className="field">

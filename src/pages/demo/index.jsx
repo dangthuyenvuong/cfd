@@ -1,5 +1,6 @@
 import { useContext, useEffect, useReducer, useState } from 'react';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../core/hooks/useAuth';
+// import { useAuth } from '../../core/hooks/useAuth';
 import { Reducer } from './reducer';
 import './style.scss';
 

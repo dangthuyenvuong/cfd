@@ -1,0 +1,31 @@
+// --------------------Custom--------------------
+.nav{
+  &.active{
+    transform: translate(0);
+  }
+}
+
+body{
+  main{
+    transition: all .3s ease;
+  }
+  &.menu-is-show{
+    overflow-x: hidden;
+    main{
+      transform: translateX(250px)
+    }
+  }
+}
+
+.loadingPage{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

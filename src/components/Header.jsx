@@ -1,37 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../core/hooks/useAuth';
+// import { useAuth } from '../core/hooks/useAuth';
 
 export default function Header() {
 
-    let {user} = useAuth();
+    let { user } = useAuth();
 
     let [menuopen, setOpenmenu] = useState(false)
     let headerRef = useRef()
+    let navRef = useRef()
+    let overlayRef = useRef()
 
     useEffect(() => {
         if (menuopen) {
-            document.getElementsByTagName("main")[0].style.marginLeft = "250px";
-            document.body.style.overflow = "hidden";
             document.body.classList.add("menu-is-show")
-            headerRef.current.classList.add('open-menu')
+
         } else {
-            document.getElementsByTagName("main")[0].style.marginLeft = "0";
-            document.body.removeAttribute("style");
+
             document.body.classList.remove("menu-is-show")
-            headerRef.current.classList.remove('open-menu')
 
         }
 
-
-        // document.body.classList.toggle("menu-is-show");
-        // if (document.body.classList.contains("menu-is-show")) {
-        //     document.getElementsByTagName("main")[0].style.marginLeft = "250px";
-        //     document.body.style.overflow = "hidden";
-        // } else {
-        //     document.getElementsByTagName("main")[0].style.marginLeft = "0";
-        //     document.body.removeAttribute("style");
-        // }
     }, [menuopen])
 
     function toggleMenu() {
@@ -40,57 +30,76 @@ export default function Header() {
 
     function linkChange() {
         document.body.classList.toggle("menu-is-show");
-        document.getElementsByTagName("main")[0].style.marginLeft = "0";
-        document.body.removeAttribute("style");
     }
     return (
         <>
-            <header ref={headerRef}>
-                <div className="container-fluid">
-                    <div className="menu" onClick={toggleMenu}>
-                        <div className="burger" >
+            <header id="header" ref={headerRef}>
+                <div className="wrap">
+                    <div className="menu-hambeger" onClick={toggleMenu}>
+                        <div className="button">
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
-                        <div className="text">Menu</div>
+                        <span className="text" >menu</span>
                     </div>
-                    <a href="#" className="logo">
-                        <img src="img/logo.svg" alt="black" />
-                    </a>
-                    {
-                        user.name ? <div>{user.name}</div> :
-                            <div className="user">
-                                <a href="#" className="btn btn-signin">Đăng nhập</a>
-                                <a href="#" className="btn btn-register">Đăng ký</a>
-                            </div>
-                    }
+                    <Link to="/" className="logo">
+                        <img src="/img/logo.svg" alt="" />
+                        <h1>CFD</h1>
+                    </Link>
 
+                    <div className="right">
+                        {
+                            user.name ? <div className="have-login">
+                                <div className="account">
+                                    <Link to="/hoc-vien" className="info">
+                                        <div className="name">{user.name}</div>
+                                        <div className="avatar">
+                                            <img src={user.avatar} alt="" />
+                                        </div>
+                                    </Link>
+                                </div>
+                                <div className="hamberger">
+                                </div>
+                                <div className="sub">
+                                    <a href="#">Khóa học của tôi</a>
+                                    <a href="#">Thông tin tài khoản</a>
+                                    <a href="#">Đăng xuất</a>
+                                </div>
+                            </div> :
+                                <div className="not-login bg-none">
+                                    <Link to="/dang-nhap" className="btn-register">Đăng nhập</Link>
+                                    <Link to="/dang-nhap" className="btn main btn-open-login">Đăng ký</Link>
+                                </div>
+                        }
+                    </div>
                 </div>
             </header>
-            <nav className="nav ">
+
+            <nav className="nav">
                 <ul>
-                    <li>
+                    <li className="li_login">
+                        <Link to="/dang-nhap">Đăng nhập</Link>
+                        <Link to="/dang-nhap">Đăng ký</Link>
+                    </li>
+                    <li className="active">
                         <Link onClick={linkChange} to="/">Trang chủ</Link>
                     </li>
                     <li>
-                        <Link onClick={linkChange} to="/dang-ky/khoa-hoc-324">Dang Ky</Link>
+                        <Link onClick={linkChange} to="/team">CFD Team</Link>
                     </li>
                     <li>
-                        <Link onClick={linkChange} to="/hoc-vien">Ho vien</Link>
+                        <Link onClick={linkChange} to="/khoa-hoc">Khóa Học</Link>
                     </li>
                     <li>
-                        <Link onClick={linkChange} to="/">Hỏi đáp</Link>
+                        <Link onClick={linkChange} to="/du-an">Dự Án</Link>
                     </li>
                     <li>
-                        <Link onClick={linkChange} to="/">Hợp tác</Link>
-                    </li>
-                    <li>
-                        <Link onClick={linkChange} to="/demo">Demo</Link>
+                        <Link onClick={linkChange} to="/lien-he">Liên hệ</Link>
                     </li>
                 </ul>
             </nav>
-            <div className="overlay_nav"></div>
+            <div className="overlay_nav" ref={overlayRef}></div>
         </>
     )
 }

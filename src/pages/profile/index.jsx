@@ -11,10 +11,13 @@ import {
     NavLink,
     Redirect
 } from 'react-router-dom'
+import { useAuth } from "../../core/hooks/useAuth"
+// import { useAuth } from "../../core/hooks/useAuth"
 
 export default function Profile() {
 
     let { url } = useRouteMatch();
+    let { user } = useAuth();
     // return <Redirect
     //     to={{
     //         pathname: "/",
@@ -25,9 +28,9 @@ export default function Profile() {
             <section className="section top-info">
                 <div className="information">
                     <div className="avatar">
-                        <img src="/img/avt1.jpg" alt="" />
+                        <img src={user.avatar} alt="" />
                     </div>
-                    <div className="name">Trần Nghĩa</div>
+                    <div className="name">{user.name}</div>
                     <p className="member">Thành viên của team CFD1-OFFLINE</p>
                 </div>
                 <div className="container">
