@@ -35,7 +35,7 @@ export default function Home({ label, name }) {
             .get()
             .then(res => {
                 console.log(res)
-                if (res.data) {
+                if (res && res.data) {
                     setCourse(res.data);
                 }
             })
