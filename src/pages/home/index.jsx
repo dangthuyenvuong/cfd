@@ -7,61 +7,52 @@ import { useAuth } from '../../core/hooks/useAuth';
 import Gallery from './components/Gallery';
 import Register from './components/Register';
 import Api from '../../core/Api';
+import { useCache } from '../../core/Cache';
+// import * as Cache from '../../core/Cache';
 // import { useAuth } from '../../core/hooks/useAuth';
 
-export default function Home({ label, name }) {
+export default function Home() {
 
     let [count, setCount] = useState(0);
 
-    // let { label, name } = props;
 
-    // let label = props.label
-    // let name = props.name
 
     // label = 'asdfsdf'
 
     let { user } = useAuth();
 
-    let [course, setCourse] = useState([]);
 
-    // useEffect(() => {
-    //     // fetch('http://localhost:8888/api/elearning_course', {
-    //     //     headers: {
-    //     //         'Authorization': 'Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZ1b25nLmRhbmdAZG5hLnZuIiwiX2lkIjoiNWZhZmFkYjgzMzRlZTkyZjQ0MmQ3YTNjIiwiaWF0IjoxNjA3MjQzMTgxLCJleHAiOjE2MDczMjk1ODF9.ZZrr8P7ZOw7xcxyhx6c2mBgyR4AuKUwuoXz0ahAn2fA'
-    //     //     }
-    //     // })
+    // let [course, setCourse] = useState([]);
+    let [course, setCourse] = useCache('index-course', []);
 
-    //     // Api('api/elearning_course')
-    //     //     .get()
-    //     //     .then(res => {
-    //     //         console.log(res)
-    //     //         if (res && res.data) {
-    //     //             setCourse(res.data);
-    //     //         }
-    //     //     })
-    // }, [])
+
 
     useEffect(() => {
-        console.log('userEffect home')
+        // fetch('http://localhost:8888/api/elearning_course', {
+        //     headers: {
+        //         'Authorization': 'Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZ1b25nLmRhbmdAZG5hLnZuIiwiX2lkIjoiNWZhZmFkYjgzMzRlZTkyZjQ0MmQ3YTNjIiwiaWF0IjoxNjA3MjQzMTgxLCJleHAiOjE2MDczMjk1ODF9.ZZrr8P7ZOw7xcxyhx6c2mBgyR4AuKUwuoXz0ahAn2fA'
+        //     }
+        // })
+        if (course.length === 0) {
+            Api('rest/elearning_course')
+                .get()
+                .then(res => {
+                    console.log(res)
+                    if (res && res.data) {
+                        setCourse(res.data);
+                    }
+                })
+        }
 
-        Api('rest/elearning_course', {
-            headers: {
-                'Authorization': `Bearer ${user.accessToken}`
-            }
-        })
-        .get()
-        .then(res => {
-                if (res.data) {
-                    setCourse(res.data)
-                }
-            })
+
     }, [])
+
 
 
     return (
         <div className="homepage">
             <Banner />
-            <SectionCourse online={course} offline={course} />
+            <SectionCourse courses={course} />
             <Special />
             {/* <section className="section-3">
             <div className="container">

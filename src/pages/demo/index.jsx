@@ -1,6 +1,5 @@
-import { useContext, useEffect, useReducer, useState } from 'react';
-import { AppContext } from '../../App';
-import { useAuth, AuthContext } from '../../core/hooks/useAuth';
+import { useReducer } from 'react';
+import { useAuth } from '../../core/hooks/useAuth';
 // import { useAuth } from '../../core/hooks/useAuth';
 // import { Reducer } from './reducer';
 import './style.scss';
@@ -21,7 +20,6 @@ export function Reducer(state, action) {
                 ...state,
                 count2: state.count2 + 1
             }
-            break;
         case 'INCREMENT_3':
             let { count3 } = state;
             count3++;
@@ -29,7 +27,6 @@ export function Reducer(state, action) {
                 ...state,
                 count3
             }
-            break;
         case 'INCREMENT_4':
             let { count4 } = state;
             count4++;
@@ -41,13 +38,11 @@ export function Reducer(state, action) {
         default:
             return state;
     }
-    return state;
 }
 
-export default function Demo({user}) {
+export default function Demo() {
 
 
-    let appContext = useContext(AuthContext);
 
 
     // let [count, setCount] = useState(0)

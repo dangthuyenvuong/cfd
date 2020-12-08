@@ -31,6 +31,8 @@ export default function Header() {
     function linkChange() {
         document.body.classList.toggle("menu-is-show");
     }
+
+
     return (
         <>
             <header id="header" ref={headerRef}>
@@ -50,12 +52,12 @@ export default function Header() {
 
                     <div className="right">
                         {
-                            user.name ? <div className="have-login">
+                            user.title ? <div className="have-login">
                                 <div className="account">
                                     <Link to="/hoc-vien" className="info">
-                                        <div className="name">{user.name}</div>
+                                        <div className="name">{user.title}</div>
                                         <div className="avatar">
-                                            <img src={user.avatar} alt="" />
+                                            <img src={user.avatar.link} alt="" />
                                         </div>
                                     </Link>
                                 </div>

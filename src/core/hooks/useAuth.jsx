@@ -16,11 +16,14 @@ export default function AuthProvider({ children }) {
     let [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        console.log('userEffect useAuth')
         try{
             let user = JSON.parse(localStorage.getItem('user'))
-            setUser(user || {});
-            setLoading(false)
+            if(user){
+                getInfo();
+            }else{
+                throw 'NOT USER'
+            }
+            
         }catch(err){
             setUser({});
             setLoading(false)
@@ -44,22 +47,22 @@ export default function AuthProvider({ children }) {
     // }, [])
 
 
-    // function getInfo(user) {
-    //     Api('api/get-user-info').get()
-    //         // fetch('http://localhost:8888/api/get-user-info', {
-    //         //     headers: {
-    //         //         'Authorization': `Bear ${user.accessToken}` 
-    //         //     }
-    //         // })
-    //         .then(res => {
-    //             if (res.accessToken) {
-    //                 setUser(res);
-    //                 localStorage.setItem('user', JSON.stringify(res));
-    //                 setLoading(false);
-    //             }
+    function getInfo() {
+        Api('api/get-user-info').get()
+            // fetch('http://localhost:8888/api/get-user-info', {
+            //     headers: {
+            //         'Authorization': `Bear ${user.accessToken}` 
+            //     }
+            // })
+            .then(res => {
+                if (res && res.accessToken) {
+                    setUser(res);
+                    localStorage.setItem('user', JSON.stringify(res));
+                    setLoading(false);
+                }
 
-    //         })
-    // }
+            })
+    }
 
 
 

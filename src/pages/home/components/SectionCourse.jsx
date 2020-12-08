@@ -1,8 +1,12 @@
 import CourseCard from './../../../components/CourseCard'
 
 
-export default function SectionCourse({ offline = [], online = [] }) {
+export default function SectionCourse({ courses = [] }) {
 
+
+
+    let offline = courses.filter(e => e.course_type === 'offline')
+    let online = courses.filter(e => e.course_type !== 'offline')
 
 
     return (
@@ -31,7 +35,7 @@ export default function SectionCourse({ offline = [], online = [] }) {
                     </div>
                     <div className="list row">
                         {
-                            offline.map(e => <CourseCard key={e._id} {...e} />)
+                            online.map(e => <CourseCard key={e._id} {...e} />)
                         }
                     </div>
                     <div className="text-deco">C</div>

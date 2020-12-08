@@ -2,12 +2,13 @@ import './style.scss'
 
 // import { useAuth } from '../../core/hooks/useAuth';
 import { useEffect, useState } from 'react';
-import { useLocation, useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import LoadingPage from '../../components/LoadingPage';
 import { useAuth } from '../../core/hooks/useAuth';
 // import useValidateForm from '../../core/hooks/useValidateForm';
 import useValidateForm from '../../core/hooks/useValidateForm';
 import Api from '../../core/Api';
+import { useCache } from '../../core/Cache';
 
 
 
@@ -67,9 +68,8 @@ export default function Register() {
     }
 
     let routeMatch = useRouteMatch();
-    let location = useLocation();
 
-    let [course, setCourse] = useState({ ...location.state })
+    let [course, setCourse] = useCache(routeMatch.params.id)
     let [loading, setLoading] = useState(!course?._id)
 
     useEffect(() => {
@@ -77,26 +77,21 @@ export default function Register() {
 
 
         if (!course?._id) {
-            Api(`api/elearning_course/${routeMatch.params.id}`)
-            .get()
-            // fetch(`http://localhost:8888/api/elearning_course/${routeMatch.params.id}`, {
-            //     headers: {
-            //         'Authorization': 'Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZ1b25nLmRhbmdAZG5hLnZuIiwiX2lkIjoiNWZhZmFkYjgzMzRlZTkyZjQ0MmQ3YTNjIiwiaWF0IjoxNjA3MTU5MTYxLCJleHAiOjE2MDcyNDU1NjF9.ECfb4Ng0hkx9k5aNZl0KoQAxZRcEntKMxvhNb0dMfuU'
-            //     }
-            // })
-                .then(function(res){
-                    console.log(res)
-                    if (res.status === 200) {
-                        return res.json()
-                    }
-                })
+            Api(`rest/elearning_course/${routeMatch.params.id}`)
+                .get()
+                // fetch(`http://localhost:8888/api/elearning_course/${routeMatch.params.id}`, {
+                //     headers: {
+                //         'Authorization': 'Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZ1b25nLmRhbmdAZG5hLnZuIiwiX2lkIjoiNWZhZmFkYjgzMzRlZTkyZjQ0MmQ3YTNjIiwiaWF0IjoxNjA3MTU5MTYxLCJleHAiOjE2MDcyNDU1NjF9.ECfb4Ng0hkx9k5aNZl0KoQAxZRcEntKMxvhNb0dMfuU'
+                //     }
+                // })
                 .then(res => {
-                    setCourse(res)
-                    setLoading(false)
+                    if (res) {
+                        setCourse(res)
+                        setLoading(false)
+                    }
+
                 })
-                .cache(res => {
-                    console.log('cache' ,res )
-                })
+
         }
 
 
@@ -111,16 +106,16 @@ export default function Register() {
                 <div className="container">
                     <div className="wrap container">
                         <div className="main-sub-title">ĐĂNG KÝ</div>
-                        <h1 className="main-title">Thực chiến {course.name} </h1>
+                        <h1 className="main-title">{course.title} - {course.course_type === 'offline' ? 'Offline' : 'Online'}</h1>
                         <div className="main-info">
-                            <div className="date"><strong>Khai giảng:</strong> { course.open_day}</div>
-                            <div className="time"><strong>Thời lượng:</strong> 18 buổi</div>
-                            <div className="time"><strong>Học phí:</strong> {course.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} VND</div>
+                            <div className="date"><strong>Khai giảng:</strong> {course.opening_time}</div>
+                            <div className="time"><strong>Thời lượng:</strong> {course.count_video} buổi</div>
+                            <div className="time"><strong>Học phí:</strong> {course.money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} VND</div>
                         </div>
                         <div className="form">
                             <label>
                                 <p>Họ và tên<span>*</span></p>
-                                <input type="text" name="name" disabled value={user.name} placeholder="Họ và tên bạn" />
+                                <input type="text" name="name" disabled value={user.title} placeholder="Họ và tên bạn" />
                             </label>
                             <label>
                                 <p>Số điện thoại<span>*</span></p>
@@ -142,7 +137,7 @@ export default function Register() {
                                     Hiện có <strong>300 COIN</strong>
                                     {/* Giảm giá còn <span><strong>5.800.000 VND</strong>, còn lại 100 COIN</span> */}
                                     {/* Cần ít nhất 200 COIN để giảm giá */}
-                                    <input type="checkbox" checked="checked" />
+                                    <input type="checkbox" defaultChecked="checked" />
                                     <span className="checkmark"></span>
                                 </div>
                             </label>

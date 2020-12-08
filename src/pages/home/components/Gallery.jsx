@@ -1,7 +1,9 @@
-import { useEffect, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 let $ = window.$;
 
-export default function Gallery() {
+
+function Gallery(props) {
+    console.log('Galeery render')
     let listRef = useRef(),
         processRef = useRef(),
         nextRef = useRef(),
@@ -35,7 +37,7 @@ export default function Gallery() {
         // });
 
         $(listRef.current).on('scroll.flickity', function (event, progress) {
-            console.log('scroll')
+            // console.log('scroll')
             progress = Math.max(0.05, Math.min(1, progress));
             processRef.current.style.width = progress * 100 + '%';
         });
@@ -80,3 +82,6 @@ export default function Gallery() {
         </section>
     )
 }
+
+
+export default React.memo(Gallery)
