@@ -1,5 +1,6 @@
 import { useAuth } from "../../../core/hooks/useAuth";
 import useValidateForm from "../../../core/hooks/useValidateForm";
+import Notification from "../../../core/hooks/useNotification";
 // import { useAuth } from "../../../core/hooks/useAuth";
 // import useValidateForm from "../../../core/hooks/useValidateForm"
 
@@ -9,7 +10,6 @@ export default function MyProfile() {
 
     let { data, error, inputChange, onSubmit } = useValidateForm({
 
-        name: '',
         phone: '',
         // email: 'vuong.dang@dna.vn',
         facebook: '',
@@ -17,7 +17,7 @@ export default function MyProfile() {
         ...user,
     }, {
         validate: {
-            name: {
+            title: {
                 required: true
             },
             email: {
@@ -37,7 +37,7 @@ export default function MyProfile() {
             },
         },
         message: {
-            name: {
+            title: {
                 required: 'Họ tên là bắt buộc'
             },
             email: {
@@ -57,11 +57,10 @@ export default function MyProfile() {
             }
         }
     })
-
-    function submit() {
+    function _submit() {
         let error = onSubmit();
         if (!error) {
-            console.log('call ajax')
+            <Notification />
         }
     }
 
@@ -70,25 +69,30 @@ export default function MyProfile() {
         <div className="tab1">
             <label>
                 <p>Họ và tên<span>*</span></p>
-                <input type="text" placeholder="Nguyễn Văn A" />
+                <input type="text" onChange={inputChange} name="title" value={data.title} placeholder="Nguyễn Văn A" />
+                {error.title && <p className="input-error">{error.title}</p>}
             </label>
             <label>
                 <p>Số điện thoại<span>*</span></p>
-                <input type="text" placeholder="0949******" />
+                <input type="text" onChange={inputChange} name="phone" value={data.phone} placeholder="0949******" />
+                {error.phone && <p className="input-error">{error.phone}</p>}
+
             </label>
             <label>
                 <p>Email<span>*</span></p>
-                <input defaultValue="vuong.dang@dna.vn" disabled type="text" />
+                <input value={data.email} onChange={inputChange} name="email" disabled type="text" />
             </label>
             <label>
                 <p>Facebook<span>*</span></p>
-                <input type="text" placeholder="Facebook url" />
+                <input type="text" onChange={inputChange} name="facebook" value={data.facebook} placeholder="Facebook url" />
+                {error.facebook && <p className="input-error">{error.facebook}</p>}
             </label>
             <label>
                 <p>Skype<span>*</span></p>
-                <input type="text" placeholder="Skype url" />
+                <input type="text" onChange={inputChange} name="skype" value={data.skype} placeholder="Skype url" />
+                {error.skype && <p className="input-error">{error.skype}</p>}
             </label>
-            <div className="btn main rect">LƯU LẠI</div>
+            <div className="btn main rect" onClick={_submit}>LƯU LẠI</div>
         </div>
     )
 }

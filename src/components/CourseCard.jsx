@@ -18,8 +18,8 @@ export default function CourseCard(props) {
         <div className="col-md-4 course" ref={courseRef}>
             <div className="wrap">
                 <Link className="cover" to={{
-                    pathname: `/dang-ky/${slug}-p${_id}`,
-                    state: {[props._id]: props}
+                    pathname: `/chi-tiet-khoa-hoc/${slug}-p${_id}`,
+                    state: { [props._id]: props }
                 }}>
                     <img src={cover} alt="" />
                     {
@@ -45,7 +45,7 @@ export default function CourseCard(props) {
                     </div>
                 </Link>
                 <div className="info">
-                    <a className="name" href="#">{title}</a>
+                    <Link className="name" to="/chi-tiet-khoa-hoc">{title}</Link>
                     <p className="des">{short_description}</p>
                 </div>
                 <div className="bottom">
@@ -55,10 +55,14 @@ export default function CourseCard(props) {
                         </div>
                         <div className="name">{teacher.title}</div>
                     </div>
-                    <Link to={{
-                        pathname: `/dang-ky/${slug}-p${_id}`,
-                        state: {[props._id]: props}
-                    }} className="register-btn">Đăng ký</Link>
+                    {
+                        course_status === 'sap-khai-giang' &&
+                        <Link to={{
+                            pathname: `/dang-ky/${slug}-p${_id}`,
+                            state: { [props._id]: props }
+                        }} className="register-btn">Đăng ký</Link>
+                    }
+
                 </div>
             </div>
         </div>

@@ -64,9 +64,9 @@ export default function Header() {
                                 <div className="hamberger">
                                 </div>
                                 <div className="sub">
-                                    <a href="#">Khóa học của tôi</a>
-                                    <a href="#">Thông tin tài khoản</a>
-                                    <a href="#">Đăng xuất</a>
+                                    <Link to="/hoc-vien/khoa-hoc">Khóa học của tôi</Link>
+                                    <Link to="/hoc-vien">Thông tin tài khoản</Link>
+                                    <Link to="/logout">Đăng xuất</Link>
                                 </div>
                             </div> :
                                 <div className="not-login bg-none">

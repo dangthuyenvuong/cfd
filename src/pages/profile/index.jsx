@@ -32,11 +32,11 @@ export default function Profile() {
                 <div className="top-info">
                     <div className="avatar">
                         {/* <span className="text">H</span> */}
-                        <img src="/img/avatar-lg.png" alt="" />
+                        <img src={user?.avatar?.thumbnail?.['thumbnail-2']} alt="" />
                         <div className="camera"></div>
                     </div>
-                    <div className="name">trần nghĩa</div>
-                    <p className="des">Thành viên của team CFD1-OFFLINE</p>
+                    <div className="name">{ user.title }</div>
+                    <p className="des">Thành viên của team CFD</p>
                 </div>
                 <div className="container">
                     <div className="tab">
@@ -65,7 +65,7 @@ export default function Profile() {
                             </Route>
 
 
-                            
+
                         </div>
                     </div>
                 </div>

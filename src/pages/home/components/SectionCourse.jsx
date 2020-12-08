@@ -8,6 +8,8 @@ export default function SectionCourse({ courses = [] }) {
     let offline = courses.filter(e => e.course_type === 'offline')
     let online = courses.filter(e => e.course_type !== 'offline')
 
+    offline = offline.slice(0, 6)
+    online = online.slice(0, 6)
 
     return (
         <>

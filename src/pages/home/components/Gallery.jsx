@@ -3,7 +3,7 @@ let $ = window.$;
 
 
 function Gallery(props) {
-    console.log('Galeery render')
+    // console.log('Galeery render')
     let listRef = useRef(),
         processRef = useRef(),
         nextRef = useRef(),
@@ -39,7 +39,9 @@ function Gallery(props) {
         $(listRef.current).on('scroll.flickity', function (event, progress) {
             // console.log('scroll')
             progress = Math.max(0.05, Math.min(1, progress));
-            processRef.current.style.width = progress * 100 + '%';
+            if(processRef.current){
+                processRef.current.style.width = progress * 100 + '%';
+            }
         });
 
         $(prevRef.current).on('click', function () {

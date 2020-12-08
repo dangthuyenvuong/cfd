@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
 import Api from '../Api';
+import { useCache } from '../Cache';
 
 
 export let AuthContext = React.createContext();
@@ -11,27 +11,30 @@ export function useAuth() {
 
 
 export default function AuthProvider({ children }) {
-    let [user, setUser] = useState({})
+    // let [user, setUser] = useState({})
+    let [user, setUser] = useCache('user-info', null);
 
-    let [loading, setLoading] = useState(true)
+    let [loading, setLoading] = useState(!user)
 
     useEffect(() => {
-        try{
-            let user = JSON.parse(localStorage.getItem('user'))
-            if(user){
-                getInfo();
-            }else{
-                throw 'NOT USER'
+        if(!user){
+            try{
+                let user = JSON.parse(localStorage.getItem('user'))
+                if(user){
+                    getInfo();
+                }else{
+                    throw 'NOT USER'
+                }
+                
+            }catch(err){
+                setUser({});
+                setLoading(false)
             }
-            
-        }catch(err){
-            setUser({});
-            setLoading(false)
         }
         
         
+        
     }, []) 
-
 
     // useEffect(() => {
     //     let user = localStorage.getItem('user');

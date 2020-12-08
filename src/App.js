@@ -16,6 +16,7 @@ import Demo from './pages/demo';
 import AuthProvider from './core/hooks/useAuth';
 import Login from './pages/login';
 import PrivateRoute from './core/components/PrivateRoute';
+import CourseDetail from './pages/courseDetail';
 
 
 
@@ -25,8 +26,8 @@ function App() {
 
 
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <div className="App">
           <Header />
           <main id="main">
@@ -37,6 +38,7 @@ function App() {
               <PrivateRoute path="/hoc-vien" component={Profile} />
               <PrivateRoute path="/dang-ky/:slug-p:id" component={Register} />
 
+              <Route path="/chi-tiet-khoa-hoc/:slug-p:id" component={CourseDetail}/>
               <Route exact path="/demo">
                 <Demo />
               </Route>
@@ -50,10 +52,10 @@ function App() {
             </Switch>
           </main>
           <Footer />
-
         </div>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
+
 
 
   );

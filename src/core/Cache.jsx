@@ -20,11 +20,10 @@ export function get(name, callback) {
 
 export function useCache(name, defaultValue) {
     let data = defaultValue;
-
     let location = useLocation();
+
     if (name in store) {
-        data = store[name]
-    } else if (typeof location.state === 'object' && (name in location.state)) {
+    } else if (location?.state?.[name]) {
         data = location.state[name]
     }else{
         let session = SessionStorage.get(name);

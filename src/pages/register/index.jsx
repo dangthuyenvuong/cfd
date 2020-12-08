@@ -69,14 +69,14 @@ export default function Register() {
 
     let routeMatch = useRouteMatch();
 
-    let [course, setCourse] = useCache(routeMatch.params.id)
-    let [loading, setLoading] = useState(!course?._id)
+    let [course, setCourse] = useCache(routeMatch.params.id, null)
+    let [loading, setLoading] = useState(!course)
 
     useEffect(() => {
         document.scrollingElement.scrollTop = 0
 
 
-        if (!course?._id) {
+        if (!course) {
             Api(`rest/elearning_course/${routeMatch.params.id}`)
                 .get()
                 // fetch(`http://localhost:8888/api/elearning_course/${routeMatch.params.id}`, {
@@ -160,17 +160,17 @@ export default function Register() {
                     </div>
                 </div>
             </section>
-            <div className="register-success">
+            {/* <div className="register-success">
                 <div className="contain">
                     <div className="main-title">đăng ký thành công</div>
                     <p>
                         <strong>Chào mừng Trần Nghĩa đã trở thành thành viên mới của CFD Team.</strong> <br />
-                    Cảm ơn bạn đã đăng ký khóa học tại <strong>CFD</strong>, chúng tôi sẽ chủ động liên lạc với bạn thông qua facebook
-                    hoặc số điện thoại của bạn.
-                </p>
+                        Cảm ơn bạn đã đăng ký khóa học tại <strong>CFD</strong>, chúng tôi sẽ chủ động liên lạc với bạn thông qua facebook
+                        hoặc số điện thoại của bạn.
+                    </p>
                 </div>
                 <a href="/" className="btn main rect">về trang chủ</a>
-            </div>
+            </div> */}
 
         </div>
     )
