@@ -1,0 +1,28 @@
+@HOST = https://cfd-reactjs.herokuapp.com/
+@ACESSTOKEN = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmd0aHV5ZW52dW9uZ0BnbWFpbC5jb20iLCJfaWQiOiI1ZmNlMDYzY2U5MTQwMjNjNjQ4NmI4MDkiLCJpYXQiOjE2MDczNDg2MTQsImV4cCI6MTYwNzM0ODYyOX0.rXesYIWLmebPaN8zzDAlB8gT0zSZw2Thh8xUnD7aUnE
+
+GET {{HOST}}rest/elearning_course
+Authorization: {{ACESSTOKEN}}  
+
+
+
+###
+
+
+POST {{HOST}}api/login
+Content-Type: application/json
+
+{
+    "email": "dangthuyenvuong@gmail.com",
+    "password": "123456789"
+}
+
+
+###
+
+POST {{HOST}}api/refresh-token
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmd0aHV5ZW52dW9uZ0BnbWFpbC5jb20iLCJfaWQiOiI1ZmNlMDYzY2U5MTQwMjNjNjQ4NmI4MDkiLCJpYXQiOjE2MDczNDg3MjZ9.UtRL86NUb3WcExnY16rIoT5T83It2tn3Y4vp6xiB2kY"
+}

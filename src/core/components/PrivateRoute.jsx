@@ -4,16 +4,28 @@ import { Route } from 'react-router-dom';
 import Login from '../../pages/login';
 import { useAuth } from '../hooks/useAuth';
 
-export default function PrivateRoute({component: Component, ...prop}) {
+// export default function PrivateRoute({component: Component, ...prop}) {
 
-    let { user } = useAuth();
-    console.log(Component.prepare)
-    return <Route {...prop} render={(props) => {
+//     let { user } = useAuth();
+//     console.log(Component.prepare)
+//     return <Route {...prop} render={(props) => {
         
-        if(user.name){
-            return <Component {...props} />
-        }
+//         if(user.name){
+//             return <Component {...props} />
+//         }
 
-        return <Login {...props}/>
-    }}/>
+//         return <Login {...props}/>
+//     }}/>
+// }
+
+
+export default function PrivateRoute(props){
+    let {user} = useAuth();
+    
+    if(user._id){
+        return <Route {...props}/>
+    }
+
+    return <Route {...props} component={Login}/>
+
 }

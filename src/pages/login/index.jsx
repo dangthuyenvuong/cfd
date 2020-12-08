@@ -35,6 +35,7 @@ export default function Login() {
     let [errorMsg, setErrorMsg] = useState('');
 
     let { user, login } = useAuth();
+
     let history = useHistory();
     let routeMatch = useRouteMatch();
 
@@ -58,19 +59,22 @@ export default function Login() {
         if (!error) {
             login(data)
                 .then(error => {
-                    setErrorMsg('Email hoặc password không đúng')
+                    if(error){
+                        setErrorMsg('Email hoặc password không đúng')
+                    }
                 })
 
         }
     }
 
-    if (user.name) return <Redirect to="/" />
+    if (user._id) return <Redirect to="/" />
 
     return (
-        <div className="popup-form popup-login" style={{position: 'unset'}}>
+        <div className="popup-form popup-login" style={{ position: 'unset' }}>
             <div className="wrap">
                 <div className="ct_login">
                     <h2 className="title">Đăng nhập</h2>
+                    <h3>{errorMsg}</h3>
                     <input
                         name="email"
                         type="text"

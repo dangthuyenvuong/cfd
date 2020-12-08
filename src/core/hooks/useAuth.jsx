@@ -3,7 +3,7 @@ import { useRouteMatch } from 'react-router-dom';
 import Api from '../Api';
 
 
-let AuthContext = React.createContext();
+export let AuthContext = React.createContext();
 
 export function useAuth() {
     return useContext(AuthContext)
@@ -12,44 +12,62 @@ export function useAuth() {
 
 export default function AuthProvider({ children }) {
     let [user, setUser] = useState({})
+
     let [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        let user = localStorage.getItem('user');
-        if (user) {
-            user = JSON.parse(user);
-
-            getInfo(user);
-        } else {
-            setLoading(false);
+        console.log('userEffect useAuth')
+        try{
+            let user = JSON.parse(localStorage.getItem('user'))
+            setUser(user || {});
+            setLoading(false)
+        }catch(err){
+            setUser({});
+            setLoading(false)
         }
+        
+        
+    }, []) 
 
 
-    }, [])
+    // useEffect(() => {
+    //     let user = localStorage.getItem('user');
+    //     if (user) {
+    //         user = JSON.parse(user);
+
+    //         getInfo(user);
+    //     } else {
+    //         setLoading(false);
+    //     }
 
 
-    function getInfo(user) {
-        Api('api/get-user-info').get()
-            // fetch('http://localhost:8888/api/get-user-info', {
-            //     headers: {
-            //         'Authorization': `Bear ${user.accessToken}` 
-            //     }
-            // })
-            .then(res => {
-                if (res.accessToken) {
-                    setUser(res);
-                    localStorage.setItem('user', JSON.stringify(res));
-                    setLoading(false);
-                }
+    // }, [])
 
-            })
-    }
+
+    // function getInfo(user) {
+    //     Api('api/get-user-info').get()
+    //         // fetch('http://localhost:8888/api/get-user-info', {
+    //         //     headers: {
+    //         //         'Authorization': `Bear ${user.accessToken}` 
+    //         //     }
+    //         // })
+    //         .then(res => {
+    //             if (res.accessToken) {
+    //                 setUser(res);
+    //                 localStorage.setItem('user', JSON.stringify(res));
+    //                 setLoading(false);
+    //             }
+
+    //         })
+    // }
 
 
 
 
     function login(user) {
-        return fetch('http://localhost:8888/api/login', {
+
+
+        return fetch('https://cfd-reactjs.herokuapp.com/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

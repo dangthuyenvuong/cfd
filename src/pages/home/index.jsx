@@ -24,19 +24,35 @@ export default function Home({ label, name }) {
 
     let [course, setCourse] = useState([]);
 
-    useEffect(() => {
-        // fetch('http://localhost:8888/api/elearning_course', {
-        //     headers: {
-        //         'Authorization': 'Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZ1b25nLmRhbmdAZG5hLnZuIiwiX2lkIjoiNWZhZmFkYjgzMzRlZTkyZjQ0MmQ3YTNjIiwiaWF0IjoxNjA3MjQzMTgxLCJleHAiOjE2MDczMjk1ODF9.ZZrr8P7ZOw7xcxyhx6c2mBgyR4AuKUwuoXz0ahAn2fA'
-        //     }
-        // })
+    // useEffect(() => {
+    //     // fetch('http://localhost:8888/api/elearning_course', {
+    //     //     headers: {
+    //     //         'Authorization': 'Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZ1b25nLmRhbmdAZG5hLnZuIiwiX2lkIjoiNWZhZmFkYjgzMzRlZTkyZjQ0MmQ3YTNjIiwiaWF0IjoxNjA3MjQzMTgxLCJleHAiOjE2MDczMjk1ODF9.ZZrr8P7ZOw7xcxyhx6c2mBgyR4AuKUwuoXz0ahAn2fA'
+    //     //     }
+    //     // })
 
-        Api('api/elearning_course')
-            .get()
-            .then(res => {
-                console.log(res)
-                if (res && res.data) {
-                    setCourse(res.data);
+    //     // Api('api/elearning_course')
+    //     //     .get()
+    //     //     .then(res => {
+    //     //         console.log(res)
+    //     //         if (res && res.data) {
+    //     //             setCourse(res.data);
+    //     //         }
+    //     //     })
+    // }, [])
+
+    useEffect(() => {
+        console.log('userEffect home')
+
+        Api('rest/elearning_course', {
+            headers: {
+                'Authorization': `Bearer ${user.accessToken}`
+            }
+        })
+        .get()
+        .then(res => {
+                if (res.data) {
+                    setCourse(res.data)
                 }
             })
     }, [])

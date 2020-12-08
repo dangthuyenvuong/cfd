@@ -12,6 +12,7 @@ import {
     Redirect
 } from 'react-router-dom'
 import { useAuth } from "../../core/hooks/useAuth"
+import MyCoin from "./components/MyCoin"
 // import { useAuth } from "../../core/hooks/useAuth"
 
 export default function Profile() {
@@ -23,47 +24,52 @@ export default function Profile() {
     //         pathname: "/",
     //     }}
     // />
+
     return (
-        <main>
-            <section className="section top-info">
-                <div className="information">
+        <div className="profile">
+
+            <section>
+                <div className="top-info">
                     <div className="avatar">
-                        <img src={user.avatar} alt="" />
+                        {/* <span className="text">H</span> */}
+                        <img src="/img/avatar-lg.png" alt="" />
+                        <div className="camera"></div>
                     </div>
-                    <div className="name">{user.name}</div>
-                    <p className="member">Thành viên của team CFD1-OFFLINE</p>
+                    <div className="name">trần nghĩa</div>
+                    <p className="des">Thành viên của team CFD1-OFFLINE</p>
                 </div>
                 <div className="container">
                     <div className="tab">
-                        <div className="tab__title">
+                        <div className="tab-title">
                             <NavLink exact to={`${url}`}>Thông tin tài khoản</NavLink>
-                            <NavLink to={`${url}/khoa-hoc`}>Khoá học của tôi</NavLink>
+                            <NavLink to={`${url}/khoa-hoc`}>Khóa học của bạn</NavLink>
                             <NavLink to={`${url}/project`}>Dự án đã làm</NavLink>
-                            <NavLink to={`${url}/payment-history`}>Lịch sử thanh toán</NavLink>
+                            <NavLink to={`${url}/history`}>Lịch sử thanh toán</NavLink>
+                            <NavLink to={`${url}/coin`}>Quản lý COIN của tôi</NavLink>
                         </div>
-                        <div className="tab__content">
-                            <Switch>
+                        <div className="tab-content">
+                            <Route exact path={`${url}`}>
+                                <MyProfile />
+                            </Route>
+                            <Route path={`${url}/khoa-hoc`}>
+                                <MyCourse />
+                            </Route>
+                            <Route path={`${url}/project`}>
+                                <MyProject />
+                            </Route>
+                            <Route path={`${url}/history`}>
+                                <History />
+                            </Route>
+                            <Route path={`${url}/coin`}>
+                                <MyCoin />
+                            </Route>
 
-                                <Route path={`${url}/khoa-hoc`}>
-                                    <MyCourse />
-                                </Route>
-                                <Route path={`${url}/project`}>
-                                    <MyProject />
-                                </Route>
-                                <Route path={`${url}/payment-history`}>
-                                    <History />
-                                </Route>
-                                <Route exact path={`${url}`}>
-                                    <MyProfile />
-                                </Route>
 
-
-                            </Switch>
-
+                            
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     )
 }

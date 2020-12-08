@@ -1,58 +1,66 @@
 export default function MyCourse() {
     return (
-        <div className="tab__content-2">
-            <div className="course">
-                <a href="#" className="course__image">
-                    <img src="/img/img-course-1.jpg" alt="" />
-                </a>
-                <div className="course__info">
-                    <a href="#" className="course__info--name">front-end căn bản</a>
-                    <p className="course__info--date">Khai giảng ngày 09/09/2019</p>
-                    <div className="course__info--details">
-                        <div className="item">
-                            <img src="/img/clock.svg" alt="" />
-                            <span>54 giờ</span>
-                        </div>
-                        <div className="item">
-                            <span>25 video</span>
-                        </div>
-                        <div className="item">
-                            <img src="/img/member.svg" alt="" />
-                            <span>20 học viên</span>
-                        </div>
+        <div className="tab2">
+            <div className="item">
+                <div className="cover">
+                    <img src="/img/img3.png" alt="" />
+                </div>
+                <div className="info">
+                    <a href="#" className="name">
+                        front-end căn bản
+                  </a>
+                    <div className="date">Khai giảng ngày 09/09/2019</div>
+                    <div className="row">
+                        <div className>
+                            <img src="/img/clock.svg" alt="" className="icon" />54 giờ
                     </div>
-                    <div className="progress">
-                        <div className="line"></div>
-                        <span>30%</span>
+                        <div className>
+                            <img src="/img/play.svg" alt="" className="icon" />25 video
                     </div>
-                    <div className="btn btn-round btn-continue">Tiếp tục học</div>
+                        <div className>
+                            <img src="/img/user.svg" alt="" className="icon" />20 học viên
+                    </div>
+                    </div>
+                    <div className="process">
+                        <div className="line">
+                            <div className="rate" style={{ width: '30%' }} />
+                        </div>
+                    30%
+                  </div>
+                    <div className="btn overlay round btn-continue">
+                        Tiếp tục học
+                  </div>
                 </div>
             </div>
-            <div className="course">
-                <a href="#" className="course__image">
-                    <img src="/img/img-course-2.jpg" alt="" />
-                </a>
-                <div className="course__info">
-                    <a href="#" className="course__info--name">front-end nâng cao</a>
-                    <p className="course__info--date">Khai giảng ngày 09/09/2019</p>
-                    <div className="course__info--details">
-                        <div className="item">
-                            <img src="/img/clock.svg" alt="" />
-                            <span>54 giờ</span>
-                        </div>
-                        <div className="item">
-                            <span>25 video</span>
-                        </div>
-                        <div className="item">
-                            <img src="/img/member.svg" alt="" />
-                            <span>20 học viên</span>
-                        </div>
+            <div className="item">
+                <div className="cover">
+                    <img src="/img/img7.png" alt="" />
+                </div>
+                <div className="info">
+                    <a href="#" className="name">
+                        front-end nâng cao
+                  </a>
+                    <div className="date">Khai giảng ngày 09/09/2019</div>
+                    <div className="row">
+                        <div className>
+                            <img src="/img/clock.svg" alt="" className="icon" />54 giờ
                     </div>
-                    <div className="progress">
-                        <div className="line"></div>
-                        <span>30%</span>
+                        <div className>
+                            <img src="/img/play.svg" alt="" className="icon" />25 video
                     </div>
-                    <div className="btn btn-round btn-continue">Tiếp tục học</div>
+                        <div className>
+                            <img src="/img/user.svg" alt="" className="icon" />20 học viên
+                    </div>
+                    </div>
+                    <div className="process">
+                        <div className="line">
+                            <div className="rate" style={{ width: '30%' }} />
+                        </div>
+                    30%
+                  </div>
+                    <div className="btn overlay round btn-continue">
+                        Tiếp tục học
+                  </div>
                 </div>
             </div>
         </div>

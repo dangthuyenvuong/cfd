@@ -1,52 +1,26 @@
 export default function History() {
-    return (
-        <div className="tab__content-4">
-            <div className="payment__table">
-                <div className="payment__row">
-                    <p className="name">
-                        Khóa học CFD1-offline
-                  </p>
-                    <p className="date">
-                        09/09/2020
-                  </p>
-                    <p className="price">
-                        3.500.000 VND
-                  </p>
-                </div>
-                <div className="payment__row">
-                    <p className="name">
-                        Khóa học CFD1-offline
-                  </p>
-                    <p className="date">
-                        09/09/2020
-                  </p>
-                    <p className="price">
-                        3.500.000 VND
-                  </p>
-                </div>
-                <div className="payment__row">
-                    <p className="name">
-                        Khóa học CFD1-offline
-                  </p>
-                    <p className="date">
-                        09/09/2020
-                  </p>
-                    <p className="price">
-                        3.500.000 VND
-                  </p>
-                </div>
-                <div className="payment__row">
-                    <p className="name">
-                        Khóa học CFD1-offline
-                  </p>
-                    <p className="date">
-                        09/09/2020
-                  </p>
-                    <p className="price">
-                        3.500.000 VND
-                  </p>
-                </div>
-            </div>
-        </div>
-    )
+  return (
+    <div className="tab4">
+      <div className="item itemhistory">
+        <div className="name">Khóa học CFD1-offline</div>
+        <div className="date">09/09/2020</div>
+        <div className="money">1.500.000 VND</div>
+      </div>
+      <div className="item itemhistory">
+        <div className="name">Khóa học CFD1-offline</div>
+        <div className="date">18/10/2020</div>
+        <div className="money">1.500.000 VND</div>
+      </div>
+      <div className="item itemhistory">
+        <div className="name">Khóa học CFD1-offline</div>
+        <div className="date">18/10/2020</div>
+        <div className="money">1.500.000 VND</div>
+      </div>
+      <div className="item itemhistory">
+        <div className="name">Khóa học CFD1-offline</div>
+        <div className="date">18/10/2020</div>
+        <div className="money">1.500.000 VND</div>
+      </div>
+    </div>
+  )
 }
