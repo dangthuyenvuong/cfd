@@ -3,11 +3,12 @@ import LocalStorage from "./LocalStorage";
 
 
 
-const domain = 'https://cfd-reactjs.herokuapp.com/';
+// const domain = 'https://cfd-reactjs.herokuapp.com/';
+const domain = 'http://localhost:8888/';
 
 let headers = {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluIiwiaWF0IjoxNjA3MzE1MDg2LCJleHAiOjIwODA2NzkwODZ9.cDPTTv6nN8z5PwBQh4EeYGGvO0rFxb_TR9wReFedtHo`
+    // 'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluIiwiaWF0IjoxNjA3MzE1MDg2LCJleHAiOjIwODA2NzkwODZ9.cDPTTv6nN8z5PwBQh4EeYGGvO0rFxb_TR9wReFedtHo`
 }
 
 let user = localStorage.getItem('user');
@@ -16,7 +17,7 @@ if (user) {
     user = JSON.parse(user);
     headers = {
         ...headers,
-        // 'Authorization': `Bearer ${user.accessToken}`
+        'Authorization': `Bearer ${user.accessToken}`
         // 'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluIiwiaWF0IjoxNjA3MzE1MDg2LCJleHAiOjIwODA2NzkwODZ9.cDPTTv6nN8z5PwBQh4EeYGGvO0rFxb_TR9wReFedtHo`
 
     }

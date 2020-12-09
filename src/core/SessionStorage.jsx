@@ -9,6 +9,7 @@ export default {
             Hook.doAction('getSessionStorage_' + name, data);
             return data
         }catch(err){
+            console.log(err)
             return null;
         }
     },
