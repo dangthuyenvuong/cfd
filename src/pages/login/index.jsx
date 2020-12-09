@@ -36,8 +36,8 @@ export default function Login() {
 
     let { user, login } = useAuth();
 
-    let history = useHistory();
-    let routeMatch = useRouteMatch();
+    // let history = useHistory();
+    // let routeMatch = useRouteMatch();
 
     // useEffect(() => {
     //     if(user.name){

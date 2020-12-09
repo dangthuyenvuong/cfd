@@ -9,7 +9,6 @@ export default function Header() {
 
     let [menuopen, setOpenmenu] = useState(false)
     let headerRef = useRef()
-    let navRef = useRef()
     let overlayRef = useRef()
 
     useEffect(() => {

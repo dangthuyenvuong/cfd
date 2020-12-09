@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Api from '../Api';
 import { useCache } from '../Cache';
+import LocalStorage from '../LocalStorage';
 
 
 export let AuthContext = React.createContext();
@@ -19,7 +20,7 @@ export default function AuthProvider({ children }) {
     useEffect(() => {
         if(!user){
             try{
-                let user = JSON.parse(localStorage.getItem('user'))
+                let user = LocalStorage.get('user');
                 if(user){
                     getInfo();
                 }else{
@@ -60,7 +61,7 @@ export default function AuthProvider({ children }) {
             .then(res => {
                 if (res && res.accessToken) {
                     setUser(res);
-                    localStorage.setItem('user', JSON.stringify(res));
+                    LocalStorage.set('user', res);
                     setLoading(false);
                 }
 
@@ -91,6 +92,7 @@ export default function AuthProvider({ children }) {
                 if (res.error) {
                     return res
                 } else {
+                    // LocalStorage.set('user',res)
                     localStorage.setItem('user', JSON.stringify(res));
                     setUser(res)
                 }
