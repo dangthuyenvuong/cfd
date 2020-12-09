@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^12.2.2",
     "graphql": "^15.4.0",
     "jquery": "^3.5.1",
-    "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
@@ -40,5 +39,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  }
 }

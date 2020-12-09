@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+// import $ from 'jquery'
 let $ = window.$;
 
 
@@ -54,7 +55,7 @@ export default function Comment() {
     }
 
     return (
-        <section className="section-testimonial">
+        <section className="section-testimonial" >
             <div className="container">
                 <div className="textbox">
                     <h2 className="main-title white">Học viên cảm nhận về CFD</h2>
