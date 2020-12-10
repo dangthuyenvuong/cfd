@@ -17,30 +17,16 @@ import AuthProvider from './core/hooks/useAuth';
 import Login from './pages/login';
 import PrivateRoute from './core/components/PrivateRoute';
 import CourseDetail from './pages/courseDetail';
-import GraphQLClient from './core/GraphQL';
 
-import { gql } from '@apollo/client'
 
 
 
 
 function App() {
   useEffect(() => {
-    // GraphQLClient.query({
-    //   query: gql`
-    //     query{
-    //       users{
-    //         data{
-    //           _id
-    //           title
-    //           email
-    //           avatar
-    //         }
-    //         paginate
-    //       }
-    //     }
-    //   `
-    // }).then(result => console.log(result));
+
+
+
 
 
     // fetch('http://localhost:8888/graphql', {

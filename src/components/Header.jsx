@@ -51,7 +51,7 @@ export default function Header() {
 
                     <div className="right">
                         {
-                            user.title ? <div className="have-login">
+                            user ? <div className="have-login">
                                 <div className="account">
                                     <Link to="/hoc-vien" className="info">
                                         <div className="name">{user.title}</div>

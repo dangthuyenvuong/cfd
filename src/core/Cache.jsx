@@ -21,14 +21,20 @@ export function get(name, callback) {
 export function useCache(name, defaultValue) {
     let data = defaultValue;
     let location = useLocation();
+    let check = false;
 
     if (name in store) {
+        data = store[name]
+        check = true;
     } else if (location?.state?.[name]) {
         data = location.state[name]
-    }else{
+        check = true;
+
+    } else {
         let session = SessionStorage.get(name);
-        if(session){
+        if (session) {
             data = session
+            check = true;
         }
     }
 
@@ -40,5 +46,5 @@ export function useCache(name, defaultValue) {
         setState(value)
     }
 
-    return [state, updateState];
+    return [state, updateState, check];
 }

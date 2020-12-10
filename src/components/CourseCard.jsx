@@ -11,7 +11,6 @@ export default function CourseCard(props) {
     let { title, short_description, thumbnail, slug, _id, course_status, cfd_teacher } = props;
 
     let cover = thumbnail.link
-    let teacher = cfd_teacher?.[0] || {}
 
     return (
 
@@ -51,9 +50,9 @@ export default function CourseCard(props) {
                 <div className="bottom">
                     <div className="teacher">
                         <div className="avatar">
-                            <img src={teacher.avatar?.link} alt="" />
+                            <img src={cfd_teacher.avatar?.link} alt="" />
                         </div>
-                        <div className="name">{teacher.title}</div>
+                        <div className="name">{cfd_teacher.title}</div>
                     </div>
                     {
                         course_status === 'sap-khai-giang' &&

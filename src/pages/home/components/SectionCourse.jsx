@@ -1,15 +1,8 @@
 import CourseCard from './../../../components/CourseCard'
 
 
-export default function SectionCourse({ courses = [] }) {
+export default function SectionCourse({ online = [], offline = [] }) {
 
-
-
-    let offline = courses.filter(e => e.course_type === 'offline')
-    let online = courses.filter(e => e.course_type !== 'offline')
-
-    offline = offline.slice(0, 6)
-    online = online.slice(0, 6)
 
     return (
         <>

@@ -1,10 +1,29 @@
 import Hook from "./Hook";
 import LocalStorage from "./LocalStorage";
 
+import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
+
+
+
 
 
 // const domain = 'https://cfd-reactjs.herokuapp.com/';
 const domain = 'http://localhost:8888/';
+
+
+const GraphQL = new ApolloClient({
+    uri: `${domain}graphql`,
+    cache: new InMemoryCache()
+});
+
+export const GraphQLClient = {
+    query: (qr) => {
+        return GraphQL.query({
+            query: gql`${qr}`
+        })
+    }
+}
+
 
 let headers = {
     'Content-Type': 'application/json',
@@ -26,7 +45,7 @@ if (user) {
 
 Hook.addAction('setLocalStorage_user', (value) => {
     console.log('setLocalStorage_user');
-    if(value && value.accessToken){
+    if (value && value.accessToken) {
         headers.Authorization = `Bearer ${value.accessToken}`
     }
 })
@@ -64,7 +83,7 @@ Hook.addAction('setLocalStorage_user', (value) => {
 let resendApi = true;
 async function refreshToken() {
     let user = LocalStorage.get('user');
-    if(resendApi){
+    if (resendApi) {
         if (user?.refreshToken) {
             resendApi = false;
             let res = await fetch(domain + 'api/refresh-token', {
@@ -91,14 +110,14 @@ async function refreshToken() {
             resendApi = true;
 
         }
-    }else{
+    } else {
         return new Promise((resolve, reject) => {
             Hook.addActionOneTime('setLocalStorage_user', (value) => {
                 resolve(true);
             })
         })
     }
-    
+
 
     return false;
 }
