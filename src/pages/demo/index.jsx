@@ -3,19 +3,56 @@ import { useAuth } from '../../core/hooks/useAuth';
 // import { useAuth } from '../../core/hooks/useAuth';
 // import { Reducer } from './reducer';
 import './style.scss';
+import { createStore } from 'redux';
+
+
+const increment = () => {
+    return {
+        type: 'INCREMENT'
+    }
+}
+
+const decrement = () => {
+    return {
+        type: 'DECREMENT'
+    }
+}
+
+const counter = (state = 0, action) => {
+    switch (action.type) {
+        case 'INCREMENT':
+            return state + 1;
+        case 'DECREMENT':
+            return state - 1
+        default:
+            return state;
+    }
+}
+
+let store = createStore(counter, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+
+store.subscribe(() => console.log(store.getState()))
+
+
+store.dispatch(increment())
+store.dispatch(increment())
+store.dispatch(increment())
+store.dispatch(decrement())
+
 
 
 export function Reducer(state, action) {
 
     switch (action.type) {
         case 'INCREMENT_1':
-            
+
             return {
                 ...state,
                 count: state.count + 1
             }
         case 'INCREMENT_2':
-            
+
             return {
                 ...state,
                 count2: state.count2 + 1
@@ -57,7 +94,7 @@ export default function Demo() {
         count4: 0
     })
 
-    
+
 
 
     return (
@@ -73,18 +110,18 @@ export default function Demo() {
             <button onClick={() => dispach({ type: 'INCREMENT_8798', asdf: 123423 })}>Click 8957349875</button>
 
             <div>User</div>
-            <A/>
+            <A />
         </main>
     )
 }
 
-function A(){
+function A() {
     // let {user, login} = useContext(AppContext);
 
     let { user, login } = useAuth();
 
     return <div>
-        <div style={{fontSize: 100}}>{login && 'Login'}</div>
+        <div style={{ fontSize: 100 }}>{login && 'Login'}</div>
         {user.name}
     </div>
 }
