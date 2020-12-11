@@ -22,7 +22,7 @@ import { useAuth } from '../hooks/useAuth';
 export default function PrivateRoute(props){
     let {user} = useAuth();
     
-    if(user._id){
+    if(user){
         return <Route {...props}/>
     }
 

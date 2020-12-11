@@ -18,7 +18,7 @@ export default function SectionCourse({ online = [], offline = [] }) {
                     </div>
                     <div className="list row">
                         {
-                            offline.map(e => <CourseCard key={e._id} {...e} />)
+                            offline.map(e => <CourseCard key={e._id}  {...e} />)
                         }
                     </div>
                 </div>

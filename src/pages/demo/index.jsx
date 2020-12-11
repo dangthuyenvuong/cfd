@@ -108,10 +108,10 @@ let store = createStore(
 store.subscribe(() => console.log(store.getState()))
 
 
-store.dispatch(increment1())
-store.dispatch(increment1())
-store.dispatch(increment2())
-store.dispatch(decrement1())
+// store.dispatch(increment1())
+// store.dispatch(increment1())
+// store.dispatch(increment2())
+// store.dispatch(decrement1())
 
 
 
@@ -135,7 +135,7 @@ export default function Demo() {
 
 
 
-
+    return null;
     return (
         <Provider store={store}>
             <main className="demopage demo">

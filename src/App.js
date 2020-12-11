@@ -18,8 +18,16 @@ import Login from './pages/login';
 import PrivateRoute from './core/components/PrivateRoute';
 import CourseDetail from './pages/courseDetail';
 import ToDoList from './pages/todolist';
+import Demo2 from './pages/demo2';
+// import { increment1, increment2, increment4 } from './actions/counterAction';
+
+import { Provider } from 'react-redux'
+import store from './reducer'
 
 
+// store.dispatch(increment1())
+// store.dispatch(increment2())
+// store.dispatch(increment4())
 
 
 
@@ -57,36 +65,41 @@ function App() {
 
   return (
     <Router>
-      <AuthProvider>
-        <div className="App">
-          <Header />
-          <main id="main">
-            <Switch>
-              {/* <PrivateRoute path="/hoc-vien" component={Profile} />
+      <Provider store={store}>
+        <AuthProvider>
+          <div className="App">
+            <Header />
+            <main id="main">
+              <Switch>
+                {/* <PrivateRoute path="/hoc-vien" component={Profile} />
               <PrivateRoute path="/dang-ky/khoa-hoc-:id" component={Register} /> */}
 
-              <PrivateRoute path="/hoc-vien" component={Profile} />
-              <PrivateRoute path="/dang-ky/:slug" component={Register} />
+                <PrivateRoute path="/hoc-vien" component={Profile} />
+                <PrivateRoute path="/dang-ky/:slug" component={Register} />
 
-              <Route path="/chi-tiet-khoa-hoc/:slug" component={CourseDetail} />
-              <Route exact path="/demo">
+                <Route path="/chi-tiet-khoa-hoc/:slug" component={CourseDetail} />
+                {/* <Route exact path="/demo">
                 <Demo />
-              </Route>
-              <Route path="/dang-nhap" component={Login} />
-              <Route path="/to-do-list">
-                <ToDoList />
-              </Route>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route>
-                <Page404 />
-              </Route>
-            </Switch>
-          </main>
-          <Footer />
-        </div>
-      </AuthProvider>
+              </Route> */}
+                <Route exact path="/demo2">
+                  <Demo2 />
+                </Route>
+                <Route path="/dang-nhap" component={Login} />
+                <Route path="/to-do-list">
+                  <ToDoList />
+                </Route>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route>
+                  <Page404 />
+                </Route>
+              </Switch>
+            </main>
+            <Footer />
+          </div>
+        </AuthProvider>
+      </Provider>
     </Router>
 
 
