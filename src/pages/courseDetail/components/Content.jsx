@@ -6,7 +6,7 @@ export default function Content({ course }) {
 
 
 
-    let teacher = course.cfd_teacher?.[0] || {};
+    let teacher = course.cfd_teacher;
 
     return (
         <section className="section-2">

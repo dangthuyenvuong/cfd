@@ -2,17 +2,9 @@ import { useParams } from "react-router-dom"
 import CourseCard from "../../../components/CourseCard";
 import { useCache } from "../../../core/Cache";
 
-export default function RelationCourse() {
+export default function RelationCourse({course}) {
 
-    let routeParams = useParams();
-
-    let [courses, setCourses] = useCache('index-course', [])
-
-    let relative = courses.filter(e => e.course_status === 'sap-khai-giang' && routeParams.id !== e._id);
-    
-    relative.sort(() => 0.5 - Math.random())
-    
-    relative = relative.slice(0, 3)
+   
 
     return (
         <section className="section-4">
@@ -23,7 +15,7 @@ export default function RelationCourse() {
                 </div>
                 <div className="list row">
                     {
-                        relative.map( (e, i) => <CourseCard key={i} {...e}/>)
+                        course.map( (e, i) => <CourseCard key={i} {...e}/>)
                     }
                 </div>
             </div>

@@ -2,7 +2,7 @@ import './style.scss'
 
 // import { useAuth } from '../../core/hooks/useAuth';
 import { useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useParams, useRouteMatch } from 'react-router-dom';
 import LoadingPage from '../../components/LoadingPage';
 import { useAuth } from '../../core/hooks/useAuth';
 // import useValidateForm from '../../core/hooks/useValidateForm';
@@ -67,17 +67,16 @@ export default function Register() {
         }
     }
 
-    let routeMatch = useRouteMatch();
+    let routeParam = useParams();
 
-    let [course, setCourse] = useCache(routeMatch.params.id, null)
-    let [loading, setLoading] = useState(!course)
+    let [course, setCourse] = useCache(`dang-ky-${routeParam.slug}`, null)
 
     useEffect(() => {
         document.scrollingElement.scrollTop = 0
 
 
         if (!course) {
-            Api(`rest/elearning_course/${routeMatch.params.id}`)
+            Api(`rest/elearning_course/?slug=${routeParam.slug}`)
                 .get()
                 // fetch(`http://localhost:8888/api/elearning_course/${routeMatch.params.id}`, {
                 //     headers: {
@@ -85,9 +84,8 @@ export default function Register() {
                 //     }
                 // })
                 .then(res => {
-                    if (res) {
-                        setCourse(res)
-                        setLoading(false)
+                    if (res?.data?.[0]) {
+                        setCourse(res.data[0])
                     }
 
                 })
@@ -98,7 +96,7 @@ export default function Register() {
     }, [])
 
 
-    if (loading) return <LoadingPage />
+    if (!course) return <LoadingPage />
 
     return (
         <div className="register-course">

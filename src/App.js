@@ -17,6 +17,7 @@ import AuthProvider from './core/hooks/useAuth';
 import Login from './pages/login';
 import PrivateRoute from './core/components/PrivateRoute';
 import CourseDetail from './pages/courseDetail';
+import ToDoList from './pages/todolist';
 
 
 
@@ -65,13 +66,16 @@ function App() {
               <PrivateRoute path="/dang-ky/khoa-hoc-:id" component={Register} /> */}
 
               <PrivateRoute path="/hoc-vien" component={Profile} />
-              <PrivateRoute path="/dang-ky/:slug-p:id" component={Register} />
+              <PrivateRoute path="/dang-ky/:slug" component={Register} />
 
-              <Route path="/chi-tiet-khoa-hoc/:slug-p:id" component={CourseDetail} />
+              <Route path="/chi-tiet-khoa-hoc/:slug" component={CourseDetail} />
               <Route exact path="/demo">
                 <Demo />
               </Route>
               <Route path="/dang-nhap" component={Login} />
+              <Route path="/to-do-list">
+                <ToDoList />
+              </Route>
               <Route exact path="/">
                 <Home />
               </Route>

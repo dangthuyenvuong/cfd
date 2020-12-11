@@ -67,7 +67,7 @@ export default function Login() {
         }
     }
 
-    if (user._id) return <Redirect to="/" />
+    if (user) return <Redirect to="/" />
 
     return (
         <div className="popup-form popup-login" style={{ position: 'unset' }}>

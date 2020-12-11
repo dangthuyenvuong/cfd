@@ -23,7 +23,7 @@ export default function Home() {
 
 
     // let [course, setCourse] = useState([]);
-    let [course, setCourse] = useState({
+    let [course, setCourse, cache] = useCache('index-course', {
         online: [],
         offline: []
     });
@@ -36,58 +36,59 @@ export default function Home() {
         //         'Authorization': 'Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZ1b25nLmRhbmdAZG5hLnZuIiwiX2lkIjoiNWZhZmFkYjgzMzRlZTkyZjQ0MmQ3YTNjIiwiaWF0IjoxNjA3MjQzMTgxLCJleHAiOjE2MDczMjk1ODF9.ZZrr8P7ZOw7xcxyhx6c2mBgyR4AuKUwuoXz0ahAn2fA'
         //     }
         // })
-        // if (!cache) {
+        if (!cache) {
 
-        // Api('rest/elearning_course')
-        //     .get()
-        //     .then(res => {
-        //         console.log(res)
-        //         if (res && res.data) {
-        //             setCourse(res.data);
-        //         }
-        //     })
+            // Api('rest/elearning_course')
+            //     .get()
+            //     .then(res => {
+            //         console.log(res)
+            //         if (res && res.data) {
+            //             setCourse(res.data);
+            //         }
+            //     })
 
-        GraphQLClient.query(`
-            {
-                online: elearning_courses(course_type: "online", limit: 6) {
-                  data {
-                    title
-                    short_description
-                    _id
-                    thumbnail
-                    course_status
-                    cfd_teacher {
-                      title
-                      avatar
+            GraphQLClient.query(`
+                {
+                    online: elearning_courses(course_type: "online", limit: 6) {
+                    data {
+                        title
+                        short_description
+                        _id
+                        thumbnail
+                        course_status
+                        slug
+                        cfd_teacher {
+                            title
+                            avatar
+                        }
                     }
-                  }
-                }
-                offline: elearning_courses(course_type: "offline", limit: 6) {
-                  data {
-                    title
-                    short_description
-                    _id
-                    thumbnail
-                    course_status
-                    cfd_teacher {
-                      title
-                      avatar
                     }
-                  }
+                    offline: elearning_courses(course_type: "offline", limit: 6) {
+                        data {
+                            title
+                            short_description
+                            _id
+                            thumbnail
+                            slug
+                            course_status
+                            cfd_teacher {
+                                title
+                                avatar
+                            }
+                        }
+                    }
                 }
-              }
-              
-              `).then(result => {
-            if (result && result.data) {
-                setCourse({
-                    offline: result.data.offline.data,
-                    online: result.data.online.data
-                })
+                `).then(result => {
+                if (result && result.data) {
+                    setCourse({
+                        offline: result.data.offline.data,
+                        online: result.data.online.data
+                    })
 
-            }
-        });
+                }
+            });
 
-        // }
+        }
 
     }, [])
 

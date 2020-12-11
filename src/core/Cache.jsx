@@ -41,8 +41,15 @@ export function useCache(name, defaultValue) {
     let [state, setState] = useState(data);
 
     function updateState(value) {
-        SessionStorage.set(name, value);
-        store[name] = value;
+        if(typeof value === 'function'){
+            let val = value(state);
+            SessionStorage.set(name, val);
+            store[name] = val;
+        }else{
+            SessionStorage.set(name, value);
+            store[name] = value;
+        }
+        
         setState(value)
     }
 

@@ -3,46 +3,51 @@ import { useAuth } from '../../core/hooks/useAuth';
 // import { useAuth } from '../../core/hooks/useAuth';
 // import { Reducer } from './reducer';
 import './style.scss';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import { useSelector, Provider } from 'react-redux'
 
 
-const increment = () => {
+const increment1 = () => {
     return {
-        type: 'INCREMENT'
+        type: 'INCREMENT_1'
     }
 }
-
-const decrement = () => {
+const increment2 = () => {
     return {
-        type: 'DECREMENT'
+        type: 'INCREMENT_2'
+    }
+}
+const increment3 = () => {
+    return {
+        type: 'INCREMENT_3'
+    }
+}
+const increment4 = () => {
+    return {
+        type: 'INCREMENT_4'
+    }
+}
+const increment5 = () => {
+    return {
+        type: 'INCREMENT_5'
     }
 }
 
-const counter = (state = 0, action) => {
-    switch (action.type) {
-        case 'INCREMENT':
-            return state + 1;
-        case 'DECREMENT':
-            return state - 1
-        default:
-            return state;
+const decrement1 = () => {
+    return {
+        type: 'DECREMENT_1'
     }
 }
 
-let store = createStore(counter, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 
-store.subscribe(() => console.log(store.getState()))
-
-
-store.dispatch(increment())
-store.dispatch(increment())
-store.dispatch(increment())
-store.dispatch(decrement())
-
-
-
-export function Reducer(state, action) {
+export function counter(state = {
+    count: 0,
+    count2: 0,
+    count3: 0,
+    count4: 0,
+    count5: 0,
+}, action) {
 
     switch (action.type) {
         case 'INCREMENT_1':
@@ -77,9 +82,43 @@ export function Reducer(state, action) {
     }
 }
 
+
+// const counter = (state = {
+//     count: 0,
+//     count2: 0,
+//     count3: 0,
+//     count4: 0,
+//     count5: 0,
+// }, action) => {
+//     switch (action.type) {
+//         case 
+//         default:
+//             return state;
+//     }
+// }
+
+let store = createStore(
+    combineReducers({
+        counter
+    })
+    ,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+
+store.subscribe(() => console.log(store.getState()))
+
+
+store.dispatch(increment1())
+store.dispatch(increment1())
+store.dispatch(increment2())
+store.dispatch(decrement1())
+
+
+
+
 export default function Demo() {
 
-
+    const counter = useSelector(state => state.counter)
 
 
     // let [count, setCount] = useState(0)
@@ -87,31 +126,35 @@ export default function Demo() {
     // let [count, setCount] = useState(0)
     // let [count, setCount] = useState(0)
 
-    let [state, dispach] = useReducer(Reducer, {
-        count: 0,
-        count2: 0,
-        count3: 0,
-        count4: 0
-    })
+    // let [state, dispach] = useReducer(Reducer, {
+    //     count: 0,
+    //     count2: 0,
+    //     count3: 0,
+    //     count4: 0
+    // })
 
 
 
 
     return (
-        <main className="demopage demo">
-            <p>click {state.count} times</p>
-            <button onClick={() => dispach({ type: 'INCREMENT_1' })}>Click</button>
-            <p>click {state.count2} times</p>
-            <button onClick={() => dispach({ type: 'INCREMENT_2' })}>Click</button>
-            <p>click {state.count3} times</p>
-            <button onClick={() => dispach({ type: 'INCREMENT_3' })}>Click</button>
-            <p>click {state.count4} times</p>
-            <button onClick={() => dispach({ type: 'INCREMENT_4', asdf: 123423 })}>Click</button>
-            <button onClick={() => dispach({ type: 'INCREMENT_8798', asdf: 123423 })}>Click 8957349875</button>
+        <Provider store={store}>
+            <main className="demopage demo">
+                <p>click {counter.count} times</p>
+                <button onClick={() => counter.dispach(increment1())}>Click</button>
+                <p>click {counter.count2} times</p>
+                <button onClick={() => counter.dispach(increment2())}>Click</button>
+                <p>click {counter.count3} times</p>
+                <button onClick={() => counter.dispach(increment3())}>Click</button>
+                <p>click {counter.count4} times</p>
+                <button onClick={() => counter.dispach(increment4())}>Click</button>
+                <p>click {counter.count5} times</p>
+                <button onClick={() => counter.dispach(increment5())}>Click</button>
 
-            <div>User</div>
-            <A />
-        </main>
+                <div>User</div>
+                <A />
+            </main>
+        </Provider>
+
     )
 }
 
