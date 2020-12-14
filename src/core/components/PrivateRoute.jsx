@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 // import { useAuth } from '../hooks/useAuth';
-import Login from '../../pages/login';
 import { useAuth } from '../hooks/useAuth';
 
 // export default function PrivateRoute({component: Component, ...prop}) {
@@ -19,13 +18,16 @@ import { useAuth } from '../hooks/useAuth';
 // }
 
 
-export default function PrivateRoute(props){
+export default function PrivateRoute({...props}){
     let {user} = useAuth();
     
     if(user){
         return <Route {...props}/>
     }
 
-    return <Route {...props} component={Login}/>
+    return <Route {...props} component={PrivateRoute.LoginPage}/>
 
 }
+
+
+PrivateRoute.LoginPage = null
