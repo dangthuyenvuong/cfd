@@ -10,7 +10,7 @@ Author URL: http://w3layouts.com
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Design Blog a Blog Category Bootstrap Responsive Website Template | Video post : W3layouts</title>
+    <title>Design Blog a Blog Category Bootstrap Responsive Website Template | Single post : W3layouts</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
@@ -20,7 +20,11 @@ Author URL: http://w3layouts.com
 </head>
 
 
+
+
 <body>
+
+
     <!-- header -->
     <header class="w3l-header">
         <!--/nav-->
@@ -63,9 +67,8 @@ Author URL: http://w3layouts.com
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                                 <a class="dropdown-item @@fp__active" href="blog.html">Featured posts</a>
-                                <a class="dropdown-item @@sp__active" href="blog-single.html">Standard single
-                                    post</a>
-                                <a class="dropdown-item active" href="single.html">Video single post</a>
+                                <a class="dropdown-item active" href="blog-single.html">Standard single post</a>
+                                <a class="dropdown-item @@vp__active" href="single.html">Video single post</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown @@author__active">
@@ -138,7 +141,7 @@ Author URL: http://w3layouts.com
 
     <nav id="breadcrumbs" class="breadcrumbs">
         <div class="container page-wrapper">
-            <a href="index.html">Home</a> / Blog / <span class="breadcrumb_last" aria-current="page">Video single
+            <a href="index.html">Home</a> / Blog / <span class="breadcrumb_last" aria-current="page">Standard single
                 post</span>
         </div>
     </nav>
@@ -174,18 +177,13 @@ Author URL: http://w3layouts.com
         </div>
     </div>
 
-    <div class="display-ad" style="margin: 8px auto; display: block; text-align:center;">
-        <!---728x90--->
-    </div>
-
     <section class="blog-post-main w3l-homeblock1">
         <!--/blog-post-->
         <div class="blog-content-inf pb-5">
             <div class="container pb-lg-4">
                 <div class="single-post-image">
                     <div class="post-content">
-                        <iframe src="https://www.youtube.com/embed/ZlbHdYMWSOA" frameborder="0" class="mb-5"
-                            allowfullscreen></iframe>
+                        <img src="assets/images/blogsingle.jpg" class="radius-image img-fluid mb-5" alt="" />
                     </div>
                 </div>
                 <div class="single-post-content">
@@ -225,11 +223,15 @@ Author URL: http://w3layouts.com
                         sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id
                         erat eu. Nunc id ipsum fringilla, gravida felis vitae. Phasellus lacinia id, sunt in
                         culpa quis. Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                    <div class="sing-post-thumb mb-lg-5 mb-4 pt-3">
-                        <iframe src="https://www.youtube.com/embed/9LznT2phLpI" frameborder="0"
-                            allowfullscreen></iframe>
+                    <div class="sing-post-thumb mb-5 row pt-3">
+                        <div class="col-sm-6">
+                            <a href="#url"><img src="assets/images/p1.jpg" class="img-fluid radius-image" alt=""></a>
+                        </div>
+                        <div class="col-sm-6 mt-sm-0 mt-3">
+                            <a href="#url"><img src="assets/images/b1.jpg" class="img-fluid radius-image" alt=""></a>
+                        </div>
                     </div>
-                    <h3 class="blog-desc-big m-0 mb-4">How to wite a Blog Post</h3>
+                    <h3 class="blog-desc-big m-0 mb-lg-4 mb-3">How to wite a Blog Post</h3>
                     <p class="mb-4">Dolor sit sed amet, excepteur sint occaecat non proident, sunt in culpa quis.
                         Phasellus
                         lacinia id erat eu. Nunc id ipsum fringilla, gravida felis vitae. Phasellus lacinia id, sunt
@@ -473,9 +475,6 @@ Author URL: http://w3layouts.com
             <!--//blog-post-->
     </section>
 
-    <div class="display-ad" style="margin: 8px auto; display: block; text-align:center;">
-        <!---728x90--->
-    </div>
 
     <!-- footer -->
     <footer class="w3l-footer-16">
@@ -533,53 +532,7 @@ Author URL: http://w3layouts.com
     <script src="assets/js/theme-change.js"></script>
 
     <script src="assets/js/jquery-3.3.1.min.js"></script>
-
-    <!-- /typig-text-->
-    <script>
-        const typedTextSpan = document.querySelector(".typed-text");
-        const cursorSpan = document.querySelector(".cursor");
-
-        const textArray = ["I'm Alexander Ronald.", "Writing is all my Life.", "I Love to write Blog posts!"];
-        const typingDelay = 200;
-        const erasingDelay = 10;
-        const newTextDelay = 100; // Delay between current and next text
-        let textArrayIndex = 0;
-        let charIndex = 0;
-
-        function type() {
-            if (charIndex < textArray[textArrayIndex].length) {
-                if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(type, typingDelay);
-            } else {
-                cursorSpan.classList.remove("typing");
-                setTimeout(erase, newTextDelay);
-            }
-        }
-
-        function erase() {
-            if (charIndex > 0) {
-                // add class 'typing' if there's none
-                if (!cursorSpan.classList.contains("typing")) {
-                    cursorSpan.classList.add("typing");
-                }
-                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, 0);
-                charIndex--;
-                setTimeout(erase, erasingDelay);
-            } else {
-                cursorSpan.classList.remove("typing");
-                textArrayIndex++;
-                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-                setTimeout(type, typingDelay);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function () { // On DOM Load initiate the effect
-            if (textArray.length) setTimeout(type, newTextDelay + 250);
-        });
-    </script>
-    <!-- //typig-text-->
+    x
 
     <!-- disable body scroll which navbar is in active -->
     <script>

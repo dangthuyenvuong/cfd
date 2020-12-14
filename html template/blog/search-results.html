@@ -10,13 +10,13 @@ Author URL: http://w3layouts.com
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Design Blog a Blog Category Bootstrap Responsive Website Template | Culture posts : W3layouts</title>
+    <title>Design Blog a Blog Category Bootstrap Responsive Website Template | Search results : W3layouts</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link rel="stylesheet" href="assets/css/style-liberty.css">
 </head>
 
 <body>
@@ -44,14 +44,38 @@ Author URL: http://w3layouts.com
                         <li class="nav-item @@home__active">
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
-                        <li class="nav-item dropdown active">
+                        <li class="nav-item dropdown @@category__active">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Categories <span class="fa fa-angle-down"></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item @@ls__active" href="lifestyle.html">Lifestyle posts</a>
-                                <a class="dropdown-item active" href="culture.html">Culture posts</a>
+                                <a class="dropdown-item @@cp__active" href="culture.html">Culture posts</a>
+                                <a class="dropdown-item @@su__active" href="startup.html">Startup posts</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown @@blog__active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Blog <span class="fa fa-angle-down"></span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                <a class="dropdown-item @@fp__active" href="blog.html">Featured posts</a>
+                                <a class="dropdown-item @@sp__active" href="blog-single.html">Standard single
+                                    post</a>
+                                <a class="dropdown-item @@vp__active" href="single.html">Video single post</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                More <span class="fa fa-angle-down"></span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item @@ap__active" href="author.html">Author page</a>
+                                <a class="dropdown-item active" href="search-results.html">Search results</a>
+                                <a class="dropdown-item @@404__active" href="404.html">404 page</a>
                             </div>
                         </li>
                         <li class="nav-item @@contact__active">
@@ -66,7 +90,7 @@ Author URL: http://w3layouts.com
                         <div id="search" class="pop-overlay">
                             <div class="popup">
                                 <h3 class="hny-title two">Search here</h3>
-                                <form action="#" method="Get" class="search-box">
+                                <form action="search-results.html" method="Get" class="search-box">
                                     <input type="search" placeholder="Search for blog posts" name="search"
                                         required="required" autofocus="">
                                     <button type="submit" class="btn">Search</button>
@@ -77,22 +101,19 @@ Author URL: http://w3layouts.com
                         <!-- /search popup -->
                     </div>
                     <!--//search-right-->
-                    <!-- author -->
                     <div class="header-author d-flex ml-lg-4 pl-2 mt-lg-0 mt-3">
-                        <a class="img-circle img-circle-sm" href="#author">
+                        <a class="img-circle img-circle-sm" href="author.html">
                             <img src="assets/images/author.jpg" class="img-fluid" alt="...">
                         </a>
                         <div class="align-self ml-3">
-                            <a href="#author">
+                            <a href="author.html">
                                 <h5>Alexander</h5>
                             </a>
                             <span>Blog Writer</span>
                         </div>
                     </div>
-                    <!-- // author-->
 
                 </div>
-
                 <!-- toggle switch for light and dark theme -->
                 <div class="mobile-position">
                     <nav class="navigation">
@@ -116,159 +137,148 @@ Author URL: http://w3layouts.com
 
     <nav id="breadcrumbs" class="breadcrumbs">
         <div class="container page-wrapper">
-            <a href="index.html">Home</a> / Categories /<span class="breadcrumb_last" aria-current="page">Culture</span>
+            <a href="index.html">Home</a> / More / <span class="breadcrumb_last" aria-current="page">Search
+                results</span>
         </div>
     </nav>
     <div class="w3l-searchblock w3l-homeblock1 py-5">
         <div class="container py-lg-4 py-md-3">
             <!-- block -->
-            <div class="row">
-                <div class="col-lg-8 most-recent">
-                    <h3 class="section-title-left">Culture</h3>
+            <div class="row img-block-mobile">
+                <div class="col-lg-9 most-recent">
+                    <span>We found 5 articles for you</span>
+                    <h3 class="section-title-left">Search results for : "Design"</h3>
+                    <div class="list-view ">
+                        <div class="grids5-info">
+                            <div class="blog-info">
+                                <span class="category">Technology</span>
+                                <a href="blog-single.html" class="blog-desc mt-0">Curated Collection Post : 8
+                                    Examples of
+                                    Evolution in Action
+                                </a>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur
+                                    accusamus
+                                    voluptas. Mollitia, natus ipsam maiores placeat elit.</p>
+                                <div class="author align-items-center mt-3 mb-1">
+                                    <a href="author.html">Johnson smith</a> in <a href="#url">Design</a>
+                                </div>
+                                <ul class="blog-meta">
+                                    <li class="meta-item blog-lesson">
+                                        <span class="meta-value"> April 13, 2020 </span>
+                                    </li>
+                                    <li class="meta-item blog-students">
+                                        <span class="meta-value"> 6min read</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="blog-single.html" class="d-block zoom"><img src="assets/images/8.jpg" alt=""
+                                    class="img-fluid radius-image news-image mt-md-0 mt-3"></a>
+                        </div>
 
-                    <div class="row">
-                        <div class="col-md-12 item">
-                            <div class="card">
-                                <div class="card-header p-0 position-relative">
-                                    <a href="#blog-single">
-                                        <img class="card-img-bottom d-block radius-image" src="assets/images/blog.jpg"
-                                            alt="Card image cap">
-                                    </a>
+                        <div class="grids5-info mt-5">
+                            <div class="blog-info">
+                                <span class="category">Based on your reading history</span>
+                                <a href="blog-single.html" class="blog-desc mt-0">The Key Benefits of Studying
+                                    Online
+                                    [Infographic]
+                                </a>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur
+                                    accusamus
+                                    voluptas. Mollitia, natus ipsam maiores beatae elit.</p>
+                                <div class="author align-items-center mt-3 mb-1">
+                                    <a href="author.html">Johnson smith</a> in <a href="#url">Design</a>
                                 </div>
-                                <div class="card-body p-0 blog-details">
-                                    <a href="#blog-single" class="blog-desc">How To Be The First to Post A Comment on a
-                                        Blog-Post?
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Qui eligendi
-                                        vitae sit.</p>
-                                    <div class="author align-items-center mt-3 mb-1">
-                                        <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                                    </div>
-                                    <ul class="blog-meta">
-                                        <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> April 13, 2020 </span>
-                                        </li>
-                                        <li class="meta-item blog-students">
-                                            <span class="meta-value"> 6min read</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul class="blog-meta">
+                                    <li class="meta-item blog-lesson">
+                                        <span class="meta-value"> April 13, 2020 </span>
+                                    </li>
+                                    <li class="meta-item blog-students">
+                                        <span class="meta-value"> 6min read</span>
+                                    </li>
+                                </ul>
                             </div>
+                            <a href="blog-single.html" class="d-block zoom"><img src="assets/images/9.jpg" alt=""
+                                    class="img-fluid radius-image news-image mt-md-0 mt-3"></a>
                         </div>
-                        <div class="col-lg-6 col-md-6 item mt-5 pt-lg-3">
-                            <div class="card">
-                                <div class="card-header p-0 position-relative">
-                                    <a href="#blog-single">
-                                        <img class="card-img-bottom d-block radius-image" src="assets/images/p1.jpg"
-                                            alt="Card image cap">
-                                    </a>
+
+                        <div class="grids5-info mt-5">
+                            <div class="blog-info">
+                                <span class="category">Culture</span>
+                                <a href="blog-single.html" class="blog-desc mt-0">How to Write a Blog Post: A
+                                    Step-by-Step
+                                    Guide
+                                </a>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur
+                                    accusamus
+                                    voluptas. Mollitia, natus ipsam maiores beatae elit.</p>
+                                <div class="author align-items-center mt-3 mb-1">
+                                    <a href="author.html">Johnson smith</a> in <a href="#url">Design</a>
                                 </div>
-                                <div class="card-body p-0 blog-details">
-                                    <a href="#blog-single" class="blog-desc">How to Start a Blog and make money every
-                                        Month from it
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Qui eligendi
-                                        vitae sit.</p>
-                                    <div class="author align-items-center mt-3 mb-1">
-                                        <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                                    </div>
-                                    <ul class="blog-meta">
-                                        <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> April 13, 2020 </span>
-                                        </li>
-                                        <li class="meta-item blog-students">
-                                            <span class="meta-value"> 6min read</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul class="blog-meta">
+                                    <li class="meta-item blog-lesson">
+                                        <span class="meta-value"> April 13, 2020 </span>
+                                    </li>
+                                    <li class="meta-item blog-students">
+                                        <span class="meta-value"> 6min read</span>
+                                    </li>
+                                </ul>
                             </div>
+                            <a href="blog-single.html" class="d-block zoom"><img src="assets/images/16.jpg" alt=""
+                                    class="img-fluid radius-image news-image mt-md-0 mt-3"></a>
                         </div>
-                        <div class="col-lg-6 col-md-6 item mt-5 pt-lg-3">
-                            <div class="card">
-                                <div class="card-header p-0 position-relative">
-                                    <a href="#blog-single">
-                                        <img class="card-img-bottom d-block radius-image" src="assets/images/p4.jpg"
-                                            alt="Card image cap">
-                                    </a>
+
+                        <div class="grids5-info mt-5">
+                            <div class="blog-info">
+                                <span class="category">Sports and Fitness</span>
+                                <a href="blog-single.html" class="blog-desc mt-0">Ivy Goes Mobile With New App for
+                                    Designers
+                                </a>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur
+                                    accusamus
+                                    voluptas. Mollitia, natus ipsam maiores beatae elit.</p>
+                                <div class="author align-items-center mt-3 mb-1">
+                                    <a href="author.html">Johnson smith</a> in <a href="#url">Design</a>
                                 </div>
-                                <div class="card-body p-0 blog-details">
-                                    <a href="#blog-single" class="blog-desc">What’s better than following your passion
-                                        and making income
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Qui eligendi
-                                        vitae sit.</p>
-                                    <div class="author align-items-center mt-3 mb-1">
-                                        <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                                    </div>
-                                    <ul class="blog-meta">
-                                        <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> April 13, 2020 </span>
-                                        </li>
-                                        <li class="meta-item blog-students">
-                                            <span class="meta-value"> 6min read</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul class="blog-meta">
+                                    <li class="meta-item blog-lesson">
+                                        <span class="meta-value"> April 13, 2020 </span>
+                                    </li>
+                                    <li class="meta-item blog-students">
+                                        <span class="meta-value"> 6min read</span>
+                                    </li>
+                                </ul>
                             </div>
+                            <a href="blog-single.html" class="d-block zoom"><img src="assets/images/14.jpg" alt=""
+                                    class="img-fluid radius-image news-image mt-md-0 mt-3"></a>
                         </div>
-                        <div class="col-lg-6 col-md-6 item mt-5 pt-lg-3">
-                            <div class="card">
-                                <div class="card-header p-0 position-relative">
-                                    <a href="#blog-single">
-                                        <img class="card-img-bottom d-block radius-image" src="assets/images/p3.jpg"
-                                            alt="Card image cap">
-                                    </a>
+
+                        <div class="grids5-info mt-5">
+                            <div class="blog-info">
+                                <span class="category">Health and Food </span>
+                                <a href="blog-single.html" class="blog-desc mt-0">What I Wish I Had Known Before
+                                    Writing My
+                                    First Book
+                                </a>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur
+                                    accusamus
+                                    voluptas. Mollitia, natus ipsam maiores beatae elit.</p>
+                                <div class="author align-items-center mt-3 mb-1">
+                                    <a href="author.html">Johnson smith</a> in <a href="#url">Design</a>
                                 </div>
-                                <div class="card-body p-0 blog-details">
-                                    <a href="#blog-single" class="blog-desc">Without further delay, let’s learn how you
-                                        can start a blog today.
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Qui eligendi
-                                        vitae sit.</p>
-                                    <div class="author align-items-center mt-3 mb-1">
-                                        <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                                    </div>
-                                    <ul class="blog-meta">
-                                        <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> April 13, 2020 </span>
-                                        </li>
-                                        <li class="meta-item blog-students">
-                                            <span class="meta-value"> 6min read</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul class="blog-meta">
+                                    <li class="meta-item blog-lesson">
+                                        <span class="meta-value"> April 13, 2020 </span>
+                                    </li>
+                                    <li class="meta-item blog-students">
+                                        <span class="meta-value"> 6min read</span>
+                                    </li>
+                                </ul>
                             </div>
+                            <a href="blog-single.html" class="d-block zoom"><img src="assets/images/15.jpg" alt=""
+                                    class="img-fluid radius-image news-image mt-md-0 mt-3"></a>
                         </div>
-                        <div class="col-lg-6 col-md-6 item mt-5 pt-lg-3">
-                            <div class="card">
-                                <div class="card-header p-0 position-relative">
-                                    <a href="#blog-single">
-                                        <img class="card-img-bottom d-block radius-image" src="assets/images/p7.jpg"
-                                            alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body p-0 blog-details">
-                                    <a href="#blog-single" class="blog-desc">Either way, Blogging could help you achieve
-                                        your goal.
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Qui eligendi
-                                        vitae sit.</p>
-                                    <div class="author align-items-center mt-3 mb-1">
-                                        <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                                    </div>
-                                    <ul class="blog-meta">
-                                        <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> April 13, 2020 </span>
-                                        </li>
-                                        <li class="meta-item blog-students">
-                                            <span class="meta-value"> 6min read</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
-
                     <!-- pagination -->
                     <div class="pagination-wrapper mt-5">
                         <ul class="page-pagination">
@@ -283,18 +293,19 @@ Author URL: http://w3layouts.com
                     </div>
                     <!-- //pagination -->
                 </div>
-                <div class="col-lg-4 trending mt-lg-0 mt-5 mb-lg-5">
+                <div class="col-lg-3 trending mt-lg-0 mt-5">
                     <div class="pos-sticky">
                         <h3 class="section-title-left">Trending </h3>
 
                         <div class="grids5-info">
                             <h4>01.</h4>
                             <div class="blog-info">
-                                <a href="#blog-single" class="blog-desc1"> You can always change your domain name in the
-                                    future if you like.
+                                <a href="blog-single.html" class="blog-desc1"> 10 Fresh Ways to Get Better Results
+                                    From Your
+                                    Blog Posts
                                 </a>
                                 <div class="author align-items-center mt-2 mb-1">
-                                    <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
+                                    <a href="author.html">Johnson smith</a> in <a href="#url">Design</a>
                                 </div>
                                 <ul class="blog-meta">
                                     <li class="meta-item blog-lesson">
@@ -309,10 +320,10 @@ Author URL: http://w3layouts.com
                         <div class="grids5-info">
                             <h4>02.</h4>
                             <div class="blog-info">
-                                <a href="#blog-single" class="blog-desc1"> Pick a domain name & hosting for your blog
+                                <a href="blog-single.html" class="blog-desc1"> How to Optimize for on-page SEO.
                                 </a>
                                 <div class="author align-items-center mt-2 mb-1">
-                                    <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
+                                    <a href="author.html">Johnson smith</a> in <a href="#url">Design</a>
                                 </div>
                                 <ul class="blog-meta">
                                     <li class="meta-item blog-lesson">
@@ -327,12 +338,10 @@ Author URL: http://w3layouts.com
                         <div class="grids5-info">
                             <h4>03.</h4>
                             <div class="blog-info">
-                                <a href="#blog-single" class="blog-desc1"> How To Start A Blog From Scratch and with No
-                                    Experience
-
+                                <a href="blog-single.html" class="blog-desc1"> What to Post on the Instagram
                                 </a>
                                 <div class="author align-items-center mt-2 mb-1">
-                                    <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
+                                    <a href="author.html">Johnson smith</a> in <a href="#url">Design</a>
                                 </div>
                                 <ul class="blog-meta">
                                     <li class="meta-item blog-lesson">
@@ -347,11 +356,11 @@ Author URL: http://w3layouts.com
                         <div class="grids5-info">
                             <h4>04.</h4>
                             <div class="blog-info">
-                                <a href="#blog-single" class="blog-desc1"> Within few minutes, you will have your blog
-                                    up and running.
+                                <a href="blog-single.html" class="blog-desc1"> 18 Photo & Video Ideas to Spark
+                                    Inspiration
                                 </a>
                                 <div class="author align-items-center mt-3 mb-1">
-                                    <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
+                                    <a href="author.html">Johnson smith</a> in <a href="#url">Design</a>
                                 </div>
                                 <ul class="blog-meta">
                                     <li class="meta-item blog-lesson">
@@ -381,19 +390,21 @@ Author URL: http://w3layouts.com
         <div class="footer-content py-lg-5 py-4 text-center">
             <div class="container">
                 <div class="copy-right">
-                    <h6>© 2020 Design Blog . Made with <span class="fa fa-heart" aria-hidden="true"></span>, Designed by
-                        <a href="https://w3layouts.com">W3layouts</a>
-                    </h6>
+                    <h6>© 2020 Design Blog . Made with <span class="fa fa-heart" aria-hidden="true"></span>,
+                        Designed by <a href="https://w3layouts.com">W3layouts</a> </h6>
                 </div>
                 <ul class="author-icons mt-4">
                     <li><a class="facebook" href="#url"><span class="fa fa-facebook" aria-hidden="true"></span></a>
                     </li>
-                    <li><a class="twitter" href="#url"><span class="fa fa-twitter" aria-hidden="true"></span></a></li>
+                    <li><a class="twitter" href="#url"><span class="fa fa-twitter" aria-hidden="true"></span></a>
+                    </li>
                     <li><a class="google" href="#url"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
                     </li>
-                    <li><a class="linkedin" href="#url"><span class="fa fa-linkedin" aria-hidden="true"></span></a></li>
+                    <li><a class="linkedin" href="#url"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
+                    </li>
                     <li><a class="github" href="#url"><span class="fa fa-github" aria-hidden="true"></span></a></li>
-                    <li><a class="dribbble" href="#url"><span class="fa fa-dribbble" aria-hidden="true"></span></a></li>
+                    <li><a class="dribbble" href="#url"><span class="fa fa-dribbble" aria-hidden="true"></span></a>
+                    </li>
                 </ul>
                 <button onclick="topFunction()" id="movetop" title="Go to top">
                     <span class="fa fa-angle-up"></span>
