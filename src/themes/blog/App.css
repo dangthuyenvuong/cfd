@@ -1,0 +1,7 @@
+.w3l-homeblock1 a.page-numbers, .w3l-blog-slider a.page-numbers, .w3l-blog-block2 a.page-numbers, .w3l-author a.page-numbers{
+    width: unset;
+}
+
+.w3l-homeblock1 span.page-numbers, .w3l-blog-slider span.page-numbers, .w3l-blog-block2 span.page-numbers, .w3l-author span.page-numbers{
+    margin-right: unset;
+}
