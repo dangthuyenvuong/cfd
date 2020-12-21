@@ -148,8 +148,8 @@ async function callApi(...params) {
 export default (url) => {
 
     return {
-        get: () => {
-            let params = [domain + url, { headers }]
+        get: (data) => {
+            let params = [domain + url, { headers , ...data}]
             return callApi(...params)
         },
         post: (data) => {

@@ -1,48 +1,72 @@
 
 import { useQuery } from '@apollo/client';
-import { GraphQLClient } from 'core/Api';
+import Api, { GraphQLClient } from 'core/Api';
 import React, { useEffect, useState } from 'react'
 import Breadcrumb from 'themes/blog/components/Breadcrumb'
 import Paginate from 'themes/blog/components/Paginate';
 import { useParams } from 'react-router-dom'
 import { link } from 'fs';
 import PostCard from './components/PostCard';
+import useCache from 'core/hooks/useCache';
+
+let store = {}
 
 export default function Category() {
-    let [data, setData] = useState(null);
+
 
     let params = useParams();
 
+    let [data, setState] = useCache('rest/blog_post', [params])
+
+    // let [data, setData] = useState(store?.['rest/blog_post'] || null);
+
     
-    useEffect(() => {
 
-        GraphQLClient.query(
-            `{
-                blog_posts (page: ${params.page || 1}){
-                    data {
-                        _id
-                        title
-                        description
-                        cover
-                        author{
-                          title
-                        }
-                        categories{
-                          title
-                        }
-                        time_read
-                        published_at
-                      }
-                      paginate
-                }
-              }
-              `
-        )
-            .then(res => {
-                setData(res?.data?.blog_posts)
-            })
+    
+    // useEffect(() => {
 
-    }, [params])
+    //     if(!data){
+    //         Api('rest/blog_post')
+    //         .get({
+    //             headers: {
+    //                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluIiwiaWF0IjoxNjA3MzE1MDg2LCJleHAiOjIwODA2NzkwODZ9.cDPTTv6nN8z5PwBQh4EeYGGvO0rFxb_TR9wReFedtHo'
+    //             }
+    //         })
+    //         .then(res => {
+    //             store['rest/blog_post'] = res;
+    //         })
+    //     }
+
+    //     // GraphQLClient.query(
+    //     //     `{
+    //     //         blog_posts (page: ${params.page || 1}){
+    //     //             data {
+    //     //                 _id
+    //     //                 title
+    //     //                 description
+    //     //                 cover
+    //     //                 author{
+    //     //                   title
+    //     //                 }
+    //     //                 categories{
+    //     //                   title
+    //     //                 }
+    //     //                 time_read
+    //     //                 published_at
+    //     //               }
+    //     //               paginate
+    //     //         }
+    //     //       }
+    //     //       `
+    //     // )
+    //     //     .then(res => {
+    //     //         setData(res?.data?.blog_posts)
+    //     //     })
+
+
+        
+
+    // }, [params])
 
     if (!data) return '...Loading'
     return (

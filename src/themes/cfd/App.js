@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.scss'
 import {
   BrowserRouter as Router,
@@ -34,11 +34,13 @@ import store from './reducer'
 PrivateRoute.LoginPage = Login
 
 function App() {
+  let [count, setCount] = useState(0);
+
   useEffect(() => {
-
-
-
-
+    setInterval(() => {
+      setCount(++count)
+      console.log(count)
+    }, 1000)
 
     // fetch('http://localhost:8888/graphql', {
     //   method: 'POST',

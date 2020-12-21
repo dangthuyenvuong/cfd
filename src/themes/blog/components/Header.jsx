@@ -1,15 +1,57 @@
-import React from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import PopupSearch from './PopupSearch'
 
-export default function Header() {
+function Header({ fun }) {
+    let popupSearchRef = useRef();
+
+    let [count, setCount] = useState(0)
+    let [count2, setCount2] = useState(0)
+
+
+    useEffect(() => {
+        if (count === 0) {
+            setCount(10 + Math.random() * 200);
+        }
+    }, [count]);
+
+    useLayoutEffect(() => {
+        console.log('useLayoutEffect', count2)
+        if (count2 === 0) {
+            setCount2(10 + Math.random() * 200);
+        }
+    }, [count2]);
+
+    console.log('aaa')
+
+    function randomCount() {
+        setCount(0)
+    }
+    function randomCount2() {
+        setCount2(0)
+    }
+
+    // useEffect(() => {
+    //     console.log(popupSearchRef)
+    // }, [])
+
+
+    function openSearch() {
+        popupSearchRef.current.open()
+    }
+    // fun && fun()
+    // console.log('header')
     return (
         <header className="w3l-header">
+            <span style={{fontSize: 50}}>count1: {count}</span> <br/>
+            <span style={{fontSize: 50}}>count2: {count2}</span>
             {/*/nav*/}
             <nav className="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
                 <div className="container">
-                    <a className="navbar-brand" href="index.html">
-                        <span className="fa fa-pencil-square-o" /> Design Blog</a>
+                    <Link className="navbar-brand" to="/">
+                        <span className="fa fa-pencil-square-o" /> Design Blog</Link>
                     {/* if logo is image enable this   
-                      <a class="navbar-brand" href="#index.html">
+                      <a class="navbar-brand" href="#/">
                           <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
                       </a> */}
                     <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,14 +62,14 @@ export default function Header() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item active">
-                                <a className="nav-link" href="/">Home</a>
+                                <Link className="nav-link" to="/">Home</Link>
                             </li>
                             <li className="nav-item dropdown @@category__active">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Categories <span className="fa fa-angle-down" />
                                 </a>
                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a className="dropdown-item @@ls__active" href="/category">Lifestyle posts</a>
+                                    <Link className="dropdown-item @@ls__active" to="/category">Lifestyle posts</Link>
                                     <a className="dropdown-item @@cp__active" href="culture.html">Culture posts</a>
                                     <a className="dropdown-item @@su__active" href="startup.html">Startup posts</a>
                                 </div>
@@ -59,18 +101,10 @@ export default function Header() {
                         </ul>
                         {/*/search-right*/}
                         <div className="search-right mt-lg-0 mt-2">
-                            <a href="#search" title="search"><span className="fa fa-search" aria-hidden="true" /></a>
+                            <a onClick={randomCount} title="search"><span className="fa fa-search" aria-hidden="true" /></a>
+                            <a onClick={randomCount2} title="search"><span className="fa fa-search" aria-hidden="true" /></a>
                             {/* search popup */}
-                            <div id="search" className="pop-overlay">
-                                <div className="popup">
-                                    <h3 className="hny-title two">Search here</h3>
-                                    <form action="search-results.html" method="Get" className="search-box">
-                                        <input type="search" placeholder="Search for blog posts" name="search" required="required" autoFocus />
-                                        <button type="submit" className="btn">Search</button>
-                                    </form>
-                                    <a className="close" href="#close">×</a>
-                                </div>
-                            </div>
+                            <PopupSearch ref={popupSearchRef} />
                             {/* /search popup */}
                         </div>
                         {/*//search-right*/}
@@ -107,3 +141,6 @@ export default function Header() {
         </header>
     )
 }
+
+
+export default React.memo(Header)

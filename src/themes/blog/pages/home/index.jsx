@@ -5,11 +5,17 @@ import Paginate from 'themes/blog/components/Paginate';
 export default function Home() {
     let [data, setData] = useState(null);
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get('page');
+    
+
+    console.log(page)
+
     useEffect(() => {
 
         GraphQLClient.query(
             `{
-                blog_posts {
+                blog_posts(page: ${page || 1}){
                   data {
                     title
                     description
@@ -20,10 +26,11 @@ export default function Home() {
               `
         )
         .then(res => {
+            console.log('aaaaa')
             setData(res?.data?.blog_posts)
         })
         
-    }, [])
+    }, [page])
 
     if(!data) return '...Loading'
 
@@ -540,7 +547,7 @@ export default function Home() {
                             </div>
                         </div>
                         {/* pagination */}
-                        <Paginate paginate={data.paginate}/>
+                        <Paginate paginate={data.paginate} renderLink={(e) => '/?page=' + e}/>
                         {/* //pagination */}
                     </div>
                     <div className="col-lg-3 trending mt-lg-0 mt-5 mb-lg-5">

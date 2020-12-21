@@ -6,5 +6,5 @@
     sessionStorage.setItem( name: string ) : gán dữ liệu
 ## 1. Sử dụng useMemo cho header
 ## 2. Sử dụng useCallback cho paginate
-## 3. Sử dụng useImperativeHandle cho Popup Search
 ## 4. Sử dụng useLayoutEffect cho các trường hợp setState liên tục
+## 3. Sử dụng useImperativeHandle cho Popup Search
