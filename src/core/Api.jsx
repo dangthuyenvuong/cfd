@@ -7,8 +7,8 @@ import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
 
 
 
-// const domain = 'https://cfd-reactjs.herokuapp.com/';
-const domain = 'http://localhost:8888/';
+const domain = 'https://cfd-reactjs.herokuapp.com/';
+// const domain = 'http://localhost:8888/';
 
 
 const GraphQL = new ApolloClient({

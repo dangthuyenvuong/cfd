@@ -8,21 +8,25 @@ function Header({ fun }) {
     let [count, setCount] = useState(0)
     let [count2, setCount2] = useState(0)
 
-
+    // console.log('count', count)
     useEffect(() => {
         if (count === 0) {
             setCount(10 + Math.random() * 200);
         }
     }, [count]);
 
+    // console.log('count', count)
+
+    console.log('count2', count2)
+
     useLayoutEffect(() => {
-        console.log('useLayoutEffect', count2)
         if (count2 === 0) {
             setCount2(10 + Math.random() * 200);
         }
+
     }, [count2]);
 
-    console.log('aaa')
+    console.log('count2', count2)
 
     function randomCount() {
         setCount(0)
